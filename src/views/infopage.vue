@@ -105,12 +105,6 @@
                 <div class="m-kv-label">Date</div>
                 <div class="m-kv-value">07 March, 2026</div>
               </div>
-              <div class="m-kv">
-                <div class="m-kv-label">Ticket</div>
-                <div class="m-kv-value">
-                  <a class="m-link" :href="ticketUrl" target="_blank" rel="noreferrer">Open</a>
-                </div>
-              </div>
             </div>
 
             <div class="m-card">
@@ -127,18 +121,21 @@
             </div>
 
             <div class="m-card">
+              <div class="m-title">TICKETING</div>
+              <div class="m-actions m-actions--3">
+                <a class="m-btn" :href="ticketing.entry" target="_blank" rel="noreferrer">ENTRY</a>
+                <a class="m-btn" :href="ticketing.general" target="_blank" rel="noreferrer">GENERAL</a>
+                <a class="m-btn" :href="ticketing.vip" target="_blank" rel="noreferrer">VIP</a>
+              </div>
+            </div>
+
+            <!-- ✅ 再放 ANNOUNCEMENT（与上面互换位置） -->
+            <div class="m-card">
               <div class="m-title">ANNOUNCEMENT</div>
               <div class="m-text">
                 MikuOnly NYC 2026 is officially starting!<br />
                 Cross the screen and step into the spotlight, where your performance brings the virtual world to life.<br />
                 Kick off your year on our stage with melodies of magic and symphonies of dreams.
-              </div>
-            </div>
-
-            <div class="m-card">
-              <div class="m-title">ACTIONS</div>
-              <div class="m-actions">
-                <a class="m-btn" :href="ticketUrl" target="_blank" rel="noreferrer">TICKETING</a>
               </div>
             </div>
           </div>
@@ -259,7 +256,11 @@ export default {
       _tick: null,
 
       // when.vue 里的 ticket 链接
-      ticketUrl: "https://www.ny-miku-only.com/ticket-1",
+      ticketing: {
+        entry: "https://www.ny-miku-only.com/event-details/miku-only-ny-2026-entry-admission",
+        general: "https://www.ny-miku-only.com/event-details/miku-only-ny-2026-general-admission",
+        vip: "https://www.ny-miku-only.com/event-details/miku-only-ny-2026-vip-admission"
+      },
 
       // where.vue 里的地图链接
       mapUrl:
@@ -370,7 +371,9 @@ export default {
   text-rendering: geometricPrecision;
 }
 
-/* ====== 原本的动画与通用样式（保持） ====== */
+/* =========================================================
+   原本的动画与通用样式（保持）
+   ========================================================= */
 .switchpanel {
   animation-name: switchpanel;
   animation-delay: 0s;
@@ -380,8 +383,8 @@ export default {
   animation-fill-mode: forwards;
 }
 
-.frosted-panel_info {
-  background: rgba(0, 0, 0, 0.1);
+.frosted-panel_info{
+  background: rgba(0, 0, 0,0.1);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(50px);
   box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.4);
@@ -409,10 +412,9 @@ export default {
   animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
   animation-fill-mode: forwards;
 }
-
 @keyframes whenselect {
-  0% { top: 1vh; opacity: 0; }
-  100% { top: -0.8vh; opacity: 1; }
+  0% { top: 1vh; opacity:0; }
+  100% { top: -0.8vh; opacity:1; }
 }
 
 .whereselect {
@@ -423,10 +425,9 @@ export default {
   animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
   animation-fill-mode: forwards;
 }
-
 @keyframes whereselect {
-  0% { left: -1.8vh; opacity: 0; }
-  100% { left: -0.8vh; opacity: 1; }
+  0% { left: -1.8vh; opacity:0; }
+  100% { left: -0.8vh; opacity:1; }
 }
 
 .whoselect {
@@ -437,15 +438,27 @@ export default {
   animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
   animation-fill-mode: forwards;
 }
-
 @keyframes whoselect {
-  0% { top: -2.6vh; opacity: 0; }
-  100% { top: -0.8vh; opacity: 1; }
+  0% { top: -2.6vh; opacity:0; }
+  100% { top: -0.8vh; opacity:1; }
 }
 
-.submenubtn:hover { background: white; }
+.submenubtn:hover { background:white; }
 
-/* ===== Mobile：立绘背景层 ===== */
+/* =========================================================
+   Desktop 图片 media 保留
+   ========================================================= */
+@media (width <= 1025px) {
+  .infopage--desktop .fg img {
+    left: 35% !important;
+    transform: translateX(-50%) !important;
+    scale: 0.75;
+  }
+}
+
+/* =========================================================
+   ✅ Mobile：立绘背景层
+   ========================================================= */
 .infopage--mobile {
   height: 100dvh;
   overflow: hidden;
@@ -457,6 +470,7 @@ export default {
   z-index: 1;
   pointer-events: none;
 }
+
 .infopage--mobile .fg img {
   position: absolute;
   height: 100%;
@@ -464,6 +478,7 @@ export default {
   left: 18%;
   filter: drop-shadow(4vh 4vh 1vh rgba(0,0,118,0.2));
 }
+
 @media (width <= 1025px) {
   .infopage--mobile .fg img {
     left: 35% !important;
@@ -472,37 +487,41 @@ export default {
   }
 }
 
-/* ===== Mobile：卡片信息区 ===== */
+/* =========================================================
+   ✅ Mobile：卡片信息区（主布局）
+   ========================================================= */
 .infopage--mobile .m-shell {
   position: absolute;
   inset: 0;
   z-index: 2;
+
   padding: clamp(6vh, 8vh, 10vh) clamp(10px, 4vw, 18px) calc(12px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* tabs */
 .infopage--mobile .m-tabs {
   display: flex;
   gap: 10px;
   justify-content: center;
 }
 
-/* ✅ 更接近截图：tab 字体更细 + 大写 + 适度字距 */
 .infopage--mobile .m-tab {
   border: 0;
   cursor: pointer;
   border-radius: 999px;
   padding: 10px 14px;
-  background: rgba(255,255,255,0.55);
+
+  background: rgba(255,255,255,0.10);
   backdrop-filter: blur(16px) saturate(1.3);
   -webkit-backdrop-filter: blur(16px) saturate(1.3);
   box-shadow: 0 8px 22px rgba(0,0,0,0.18);
 
   font-size: clamp(12px, 3.2vw, 15px);
-  letter-spacing: 0.18em;      /* 更像你截图那种 spaced */
-  font-weight: 500;           /* 比原来更像“细但清楚” */
+  letter-spacing: 0.18em;
+  font-weight: 500;
   color: rgba(0,0,0,0.78);
   min-width: 86px;
   text-align: center;
@@ -518,24 +537,30 @@ export default {
 }
 
 .infopage--mobile .m-tab.active {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.15);
   box-shadow: 0 10px 26px rgba(0,0,0,0.22);
 }
 
+/* panel */
 .infopage--mobile .m-panel {
   flex: 1 1 auto;
   min-height: 0;
   border-radius: 18px;
   overflow: hidden;
+  isolation: isolate; /* ✅ 防止滤镜/阴影穿透导致视觉“出框” */
 }
 
 .infopage--mobile .m-scroll {
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+
   padding: 12px;
+  border-radius: 18px;
 }
 
+/* stack / card */
 .infopage--mobile .m-stack {
   display: flex;
   flex-direction: column;
@@ -551,39 +576,48 @@ export default {
   box-shadow: 0 10px 24px rgba(0,0,0,0.16);
 }
 
-/* ✅ 标题：更像截图（细字 + 大字距） */
+/* ✅ 标题：稳定版（不使用大负 margin，不会飘/重影） */
 .infopage--mobile .m-title {
   font-size: 12px;
-  letter-spacing: 0.28em;
-  font-weight: 600;
-  opacity: 0.62;
-  margin-bottom: 10px;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  opacity: 0.72;
   text-transform: uppercase;
+
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
+/* key/value 行：用 grid 避免挤压重叠 */
 .infopage--mobile .m-kv {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 90px 1fr;
   gap: 10px;
-  padding: 8px 0;
+  align-items: center;
+
+  padding: 10px 0;
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 .infopage--mobile .m-kv:last-child { border-bottom: 0; }
 
-/* ✅ label/value 变成更“UI 灰字”感觉 */
 .infopage--mobile .m-kv-label {
   font-size: 12px;
   opacity: 0.55;
   font-weight: 500;
 }
+
 .infopage--mobile .m-kv-value {
   font-size: clamp(13px, 3.7vw, 16px);
   font-weight: 700;
   text-align: right;
   opacity: 0.85;
+  min-width: 0;
 }
 
-/* ✅ 段落字：更像截图（更细、更干净） */
 .infopage--mobile .m-text {
   font-size: clamp(13px, 3.6vw, 15px);
   line-height: 1.45;
@@ -596,6 +630,7 @@ export default {
   gap: 10px;
   margin-top: 10px;
 }
+
 .infopage--mobile .m-btn {
   flex: 1 1 auto;
   text-decoration: none;
@@ -618,6 +653,7 @@ export default {
   font-weight: 600;
 }
 
+/* countdown */
 .infopage--mobile .m-count {
   display: flex;
   align-items: baseline;
@@ -636,7 +672,6 @@ export default {
   font-size: 12px;
   font-weight: 700;
 }
-
 .infopage--mobile .m-count-row {
   display: flex;
   gap: 10px;
@@ -649,17 +684,19 @@ export default {
   border-radius: 999px;
   padding: 8px 10px;
   text-align: center;
-  font-size: 12px;
 
+  font-size: 12px;
   letter-spacing: 0.10em;
   font-weight: 600;
   opacity: 0.9;
+
+  /* ✅ 避免 pill 内文字挤爆 */
+  white-space: nowrap;
 }
 .infopage--mobile .m-pill-n {
   font-weight: 800;
   font-size: 14px;
 }
-
 .infopage--mobile .m-note {
   margin-top: 10px;
   font-size: 12px;
@@ -667,7 +704,9 @@ export default {
   letter-spacing: 0.08em;
 }
 
-/* WHERE photos */
+/* =========================================================
+   WHERE photos
+   ========================================================= */
 .infopage--mobile .m-photo-main {
   width: 100%;
   border-radius: 14px;
@@ -688,6 +727,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   padding-bottom: 2px;
 }
+
 .infopage--mobile .m-photo-thumb {
   border: 0;
   padding: 0;
@@ -710,7 +750,9 @@ export default {
   display: block;
 }
 
-/* WHO grid */
+/* =========================================================
+   WHO grid + 溢出修复
+   ========================================================= */
 .infopage--mobile .m-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -722,6 +764,8 @@ export default {
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 14px;
   padding: 10px;
+
+  overflow: hidden; /* ✅ 防止头像/文字/阴影跑出卡片 */
 }
 
 .infopage--mobile .m-guest-avatar {
@@ -745,6 +789,10 @@ export default {
   font-size: 14px;
   letter-spacing: 0.04em;
   opacity: 0.88;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .infopage--mobile .m-guest-role {
@@ -752,6 +800,7 @@ export default {
   opacity: 0.62;
   margin-top: 2px;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .infopage--mobile .m-guest-link {
@@ -761,57 +810,51 @@ export default {
   opacity: 0.9;
   text-decoration: underline;
   font-weight: 600;
-}
 
-/* Desktop 的图片 media 保留 */
-@media (width <= 1025px) {
-  .infopage--desktop .fg img {
-    left: 35% !important;
-    transform: translateX(-50%) !important;
-    scale: 0.75;
-  }
-}
-/* =========================
-   1) WHO 页卡片溢出修复
-   ========================= */
-
-/* 外层圆角面板：确保裁切所有滚动内容 */
-.infopage--mobile .m-panel {
-  overflow: hidden !important;
-  border-radius: 18px !important;
-  isolation: isolate; /* 避免 backdrop-filter + 子元素阴影怪穿透 */
-}
-
-/* 滚动层也裁切，防止卡片/阴影穿出圆角 */
-.infopage--mobile .m-scroll {
-  overflow: auto !important;
-  overflow-x: hidden !important;
-  border-radius: 18px !important;
-}
-
-/* WHO grid：不要让内容把卡片撑破 */
-.infopage--mobile .m-grid {
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-/* guest card：限制溢出 + 更干净的布局 */
-.infopage--mobile .m-guest {
-  overflow: hidden !important;       /* ✅ 防止内部图片/文字跑出卡片圆角 */
-  border-radius: 14px !important;
-}
-
-/* avatar：保证图片不会溢出 */
-.infopage--mobile .m-guest-avatar {
-  overflow: hidden !important;
-  border-radius: 12px !important;
-}
-
-/* 名字/链接：长字符串不要撑破卡片 */
-.infopage--mobile .m-guest-name,
-.infopage--mobile .m-guest-link {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* =========================================================
+   ✅ 关键修复：防止 desktop 的 when/where/who 全局样式污染 mobile
+   - 你截图里那种 “MEETING TIME / TIME REMAINING / ACTIONS” 淡字重影
+     基本都是全局 absolute / letter-spacing / opacity 样式泄漏
+   ========================================================= */
+
+/* mobile 信息区隔离 */
+.infopage--mobile .m-panel,
+.infopage--mobile .m-scroll {
+  isolation: isolate;
+}
+
+/* 清除 mobile 卡片区里可能被外部样式“强行 absolute / 水印化”的情况 */
+.infopage--mobile .m-scroll * ,
+.infopage--mobile .m-scroll *::before,
+.infopage--mobile .m-scroll *::after {
+  /* 防“水印字” */
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 1;
+
+  /* 防 absolute 漂移（如果你的项目里没有全局 absolute 污染，这段也不会伤害布局） */
+  position: relative;
+}
+
+/* 再把我们自己的需要的大小写/字距加回来（确保 UI 仍然是你想要的风格） */
+.infopage--mobile .m-title {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+.infopage--mobile .m-tab {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 1;
+}
+.infopage--mobile .m-btn {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 1;
 }
 </style>
