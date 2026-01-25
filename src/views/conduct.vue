@@ -271,7 +271,7 @@ export default {
     },
 
     updateIsMobile() {
-      this.isMobile = window.matchMedia("(max-width: 1025px)").matches;
+      this.isMobile = window.matchMedia("(max-width: 1200px)").matches;
       if (this.isMobile) {
         this.mTab = this.currentSubpanel;
       }
@@ -392,8 +392,138 @@ export default {
   background: white;
 }
 
+/* ===== Tablet：iPad / 宽一点的平板 ===== */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .conductpage {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .conductpage .fg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .conductpage .fg img {
+    max-height: 80vh;
+    width: auto;
+    object-fit: contain;
+    margin-top: -10vh;
+    filter: drop-shadow(4vh 4vh 1vh rgba(0,0,118,0.2));
+  }
+
+  .conductpage .m-shell {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 28vh;             /* 卡片往下放一点 */
+    bottom: 0;
+    z-index: 2;
+    padding: 0 48px 24px;  /* 两边留更多空白，看起来像桌面版 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .conductpage .m-tabs {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .conductpage .m-tab {
+    position: relative;
+    border: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+    font-size: 14px;              /* 字大一点 */
+    letter-spacing: 0.20em;
+    font-weight: 600;
+    color: rgba(0,0,0,0.86);
+    min-width: 120px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .conductpage .m-tab.active {
+    background: rgba(255,255,255,0.18);
+  }
+
+  /* gem：平板上再放大、对齐到正中 */
+  .conductpage .m-gem--mobile {
+    position: absolute;
+    top: -1rem;
+    right: 2.5rem;
+    pointer-events: none;
+    transform: scale(2);
+    transform-origin: center;
+    z-index: 2;
+  }
+
+  .conductpage .m-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.32);
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+  }
+
+  .conductpage .m-scroll {
+    height: 100%;
+    padding: 18px 20px;
+    border-radius: 22px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    background: transparent !important;
+  }
+
+  /* 放大文字：AGE / PROP / REFUND 三个子组件里的内容整体加大一点 */
+  .conduct_child,
+  .conduct_cos,
+  .conduct_refund {
+    font-size: 15px;
+  }
+
+  .age-mobile-card,
+  .age-mobile-section,
+  .age-mobile-section li,
+  .cos-mobile-card,
+  .cos-mobile-section,
+  .cos-mobile-section li,
+  .refund-mobile-card,
+  .refund-mobile-section,
+  .refund-mobile-section li {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .age-mobile-title,
+  .cos-mobile-title,
+  .refund-mobile-title {
+    font-size: 13px;
+  }
+}
+
+
 /* ========= Mobile 布局 ========= */
-@media (max-width: 1025px) {
+@media (max-width: 768px) {
   .conductpage {
     position: fixed;
     inset: 0;
@@ -478,10 +608,10 @@ export default {
   /* ✅ 手机版放大的 gem */
   .conductpage .m-gem--mobile {
     position: absolute;
-    top: -0.9rem;
-    right: 1rem;
+    top: -0.5rem;
+    right: 1.6rem;
     pointer-events: none;
-    transform: scale(3.5);
+    transform: scale(4);
     transform-origin: center;
     z-index: 2;
   }

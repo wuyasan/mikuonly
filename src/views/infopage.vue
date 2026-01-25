@@ -319,7 +319,7 @@ export default {
     },
 
     updateIsMobile() {
-      this.isMobile = window.matchMedia("(max-width: 1025px)").matches;
+      this.isMobile = window.matchMedia("(max-width: 1200)").matches;
       if (this.isMobile) this.mTab = this.currentSubpanel;
     },
   },
@@ -448,7 +448,7 @@ export default {
 /* =========================================================
    Desktop 图片 media 保留
    ========================================================= */
-@media (width <= 1025px) {
+@media (width <= 1200px) {
   .infopage--desktop .fg img {
     left: 35% !important;
     transform: translateX(-50%) !important;
@@ -479,7 +479,7 @@ export default {
   filter: drop-shadow(4vh 4vh 1vh rgba(0,0,118,0.2));
 }
 
-@media (width <= 1025px) {
+@media (width <= 1200px) {
   .infopage--mobile .fg img {
     left: 35% !important;
     transform: translateX(-50%) !important;

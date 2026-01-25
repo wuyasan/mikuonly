@@ -103,12 +103,26 @@
       </div>
     </template>
 
-    <!-- ================= Mobile：竖排卡片文本 ================= -->
+    <!-- ================= Mobile / Tablet：竖排卡片文本 ================= -->
     <template v-else>
       <div class="age-mobile-card">
         <div class="age-mobile-header">
           <div class="age-mobile-title">AGE POLICY</div>
           <div class="age-mobile-sub">MIKU ONLY NYC 2026</div>
+        </div>
+
+        <div class="age-mobile-header title title--mobile">
+          <img
+              src="/nc.png"
+              class="title__nc"
+              style="filter: contrast(300%) brightness(752%) invert(100%); opacity: 0.5;"
+          >
+          <div class="heading title__h1">
+            AGE<br>POLICY
+          </div>
+          <div class="heading title__h2">
+            MIKU ONLY 2026
+          </div>
         </div>
 
         <div class="age-mobile-section">
@@ -198,7 +212,8 @@ export default {
 
   methods: {
     updateIsMobile() {
-      this.isMobile = window.matchMedia("(max-width: 1025px)").matches;
+      // 和 conduct.vue 保持一致：1200px 以下走卡片版
+      this.isMobile = window.matchMedia("(max-width: 1200px)").matches;
     },
   },
 }
@@ -235,7 +250,7 @@ export default {
   box-shadow: 0 0.8vh 2vh rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Mobile：AGE 文本卡片 ===== */
+/* ===== Mobile / Tablet：AGE 文本卡片 ===== */
 .conduct_child--mobile {
   position: relative;
   width: 100%;
@@ -259,44 +274,44 @@ export default {
 }
 
 .age-mobile-card {
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.78);
   border-radius: 16px;
-  padding: 14px;
+  padding: 16px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.16);
 }
 
 .age-mobile-header {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .age-mobile-title {
-  font-size: 12px;
+  font-size: 15px;            /* 原来 12 */
   letter-spacing: 0.20em;
-  font-weight: 700;
-  opacity: 0.75;
+  font-weight: 800;
+  opacity: 0.82;
   text-transform: uppercase;
 }
 
 .age-mobile-sub {
-  font-size: 11px;
+  font-size: 13px;            /* 原来 11 */
   letter-spacing: 0.16em;
-  opacity: 0.65;
-  margin-top: 3px;
+  opacity: 0.72;
+  margin-top: 5px;
 }
 
 .age-mobile-section {
-  margin-top: 10px;
-  font-size: 13px;
-  line-height: 1.5;
+  margin-top: 12px;
+  font-size: 15px;            /* 原来 13 */
+  line-height: 1.65;          /* 原来 1.5 */
 }
 
 .age-mobile-h {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 14px;            /* 原来 12 */
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.8;
-  margin-bottom: 6px;
+  opacity: 0.86;
+  margin-bottom: 8px;
 }
 
 .age-mobile-section p {
@@ -304,11 +319,201 @@ export default {
 }
 
 .age-mobile-section ul {
-  margin: 4px 0 0 16px;
+  margin: 6px 0 0 20px;       /* 原来 16px */
   padding: 0;
 }
 
 .age-mobile-section li {
-  margin-bottom: 4px;
+  margin-bottom: 8px;         /* 原来 4px */
 }
+
+/* ===== Phone（<=767px）：上面这套就是手机默认 ===== */
+@media (max-width: 767px) {
+  .age-mobile-card {
+    padding: 15px 14px;
+    border-radius: 14px;
+  }
+}
+
+/* ===== Tablet（768~1200px）：再放大一档，给 iPad 横屏用 ===== */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .age-mobile-card {
+    padding: 22px 22px;
+    border-radius: 20px;
+  }
+
+  .age-mobile-title {
+    font-size: 36px;
+  }
+
+  .age-mobile-sub {
+    font-size: 18px;
+  }
+
+  .age-mobile-section {
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .age-mobile-h {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .age-mobile-section ul {
+    margin-left: 24px;
+  }
+
+  .age-mobile-section li {
+    margin-bottom: 10px;
+  }
+
+  /* ===== Mobile/Tablet：title 固定在整个页面(视口)右上角 ===== */
+  .title--mobile{
+    position: fixed;           /* 关键：不是 absolute */
+    top: 12px;
+    right: 14px;
+    width: 280px;
+    height: 110px;
+    z-index: 9999;             /* 盖过卡片/人物 */
+    pointer-events: none;      /* 不挡点击 */
+  }
+
+  /* nc 图层 */
+  .title--mobile .title__nc{
+    position: absolute;
+    width: 180px;
+    left: 18px;                /* 你想更贴右也可以改小 */
+    top: -26px;
+    opacity: 0.5;
+    filter: contrast(300%) brightness(752%) invert(100%);
+  }
+
+  /* 大标题（右对齐） */
+  .title--mobile .title__h1{
+    position: absolute;
+    right: 0;
+    top: 20px;
+    font-family: font5;
+    font-weight: 900;
+    line-height: 0.95;
+    text-align: right;
+    color: rgba(255,255,255,0.55);
+    font-size: 28px;
+  }
+
+  /* 小标题（右对齐） */
+  .title--mobile .title__h2{
+    position: absolute;
+    right: 0;
+    top: 82px;
+    font-family: font5;
+    font-weight: 900;
+    line-height: 1;
+    text-align: right;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.40em;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* ===== iPad/Tablet 放大一点 ===== */
+  @media (min-width: 768px) and (max-width: 1200px){
+    .title--mobile{
+      top: 16px;
+      right: 18px;
+      width: 360px;
+      height: 140px;
+    }
+    .title--mobile .title__nc{
+      width: 240px;
+      left: 20px;
+      top: -34px;
+    }
+    .title--mobile .title__h1{
+      top: 26px;
+      font-size: 36px;
+    }
+    .title--mobile .title__h2{
+      top: 108px;
+      font-size: 14px;
+      letter-spacing: 0.46em;
+    }
+  }
+
+}
+/* ===== Mobile + Tablet：title 固定在整页右上角（m-scroll 滚动也不动）===== */
+@media (max-width: 1200px){
+  .title--mobile{
+    position: fixed !important;
+    top: 12px;
+    right: 14px;
+    width: 280px;
+    height: 110px;
+    z-index: 9999;
+    pointer-events: none;     /* 不挡点击 */
+  }
+
+  .title--mobile .title__nc{
+    position: absolute;
+    width: 180px;
+    left: 18px;
+    top: -26px;
+    opacity: 0.5;
+    filter: contrast(300%) brightness(752%) invert(100%);
+  }
+
+  .title--mobile .title__h1{
+    position: absolute;
+    right: 0;
+    top: 20px;
+    font-family: font5;
+    font-weight: 900;
+    line-height: 0.95;
+    text-align: right;
+    color: rgba(255,255,255,0.55);
+    font-size: 28px;
+  }
+
+  .title--mobile .title__h2{
+    position: absolute;
+    right: 0;
+    top: 82px;
+    font-family: font5;
+    font-weight: 900;
+    line-height: 1;
+    text-align: right;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.40em;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+/* ===== iPad/Tablet 再放大一点 ===== */
+@media (min-width: 768px) and (max-width: 1200px){
+  .title--mobile{
+    top: 16px;
+    right: 18px;
+    width: 360px;
+    height: 140px;
+  }
+  .title--mobile .title__nc{
+    width: 240px;
+    left: 20px;
+    top: -34px;
+  }
+  .title--mobile .title__h1{
+    top: 26px;
+    font-size: 36px;
+  }
+  .title--mobile .title__h2{
+    top: 108px;
+    font-size: 14px;
+    letter-spacing: 0.46em;
+  }
+}
+
+
 </style>
+

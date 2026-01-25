@@ -279,7 +279,7 @@ export default {
       isReadQuestion: false,
 
       // ✅ 手机判定
-      isMobile: window.innerWidth <= 1025,
+      isMobile: window.innerWidth <= 1200,
 
       // ✅ 手机端菜单开关（手机默认关闭）
       mobileMenuOpen: false
@@ -324,7 +324,7 @@ export default {
     },
 
     _handleResize() {
-      const mobile = window.innerWidth <= 1025
+      const mobile = window.innerWidth <= 1200
       this.isMobile = mobile
 
       // ✅ 从电脑切到手机：默认收起
@@ -971,7 +971,7 @@ export default {
 }
 
 /* ✅ 只有手机端才展示抽屉相关 */
-@media (min-width: 1025px) {
+@media (min-width: 1200px) {
   .hamburger-btn,
   .mobile-backdrop,
   .mobile-drawer {
@@ -980,7 +980,7 @@ export default {
 }
 
 /* ✅ 只有手机端才渲染手机模板，但这条保险 */
-@media (max-width: 1025px) {
+@media (max-width: 1200px) {
   /* 可以留空 */
 }
 </style>
