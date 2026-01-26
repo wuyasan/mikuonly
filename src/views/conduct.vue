@@ -271,7 +271,7 @@ export default {
     },
 
     updateIsMobile() {
-      this.isMobile = window.matchMedia("(max-width: 1200px)").matches;
+      this.isMobile = window.matchMedia("(max-width: 1300px)").matches;
       if (this.isMobile) {
         this.mTab = this.currentSubpanel;
       }

@@ -212,8 +212,8 @@ export default {
 
   methods: {
     updateIsMobile() {
-      // 和 conduct.vue 保持一致：1200px 以下走卡片版
-      this.isMobile = window.matchMedia("(max-width: 1200px)").matches;
+      // 和 conduct.vue 保持一致：1300px 以下走卡片版
+      this.isMobile = window.matchMedia("(max-width: 1300px)").matches;
     },
   },
 }
@@ -335,8 +335,8 @@ export default {
   }
 }
 
-/* ===== Tablet（768~1200px）：再放大一档，给 iPad 横屏用 ===== */
-@media (min-width: 768px) and (max-width: 1200px) {
+/* ===== Tablet（768~1300px）：再放大一档，给 iPad 横屏用 ===== */
+@media (min-width: 768px) and (max-width: 1300px) {
   .age-mobile-card {
     padding: 22px 22px;
     border-radius: 20px;
@@ -418,7 +418,7 @@ export default {
   }
 
   /* ===== iPad/Tablet 放大一点 ===== */
-  @media (min-width: 768px) and (max-width: 1200px){
+  @media (min-width: 768px) and (max-width: 1300px){
     .title--mobile{
       top: 16px;
       right: 18px;
@@ -443,7 +443,7 @@ export default {
 
 }
 /* ===== Mobile + Tablet：title 固定在整页右上角（m-scroll 滚动也不动）===== */
-@media (max-width: 1200px){
+@media (max-width: 1300px){
   .title--mobile{
     position: fixed !important;
     top: 12px;
@@ -491,7 +491,7 @@ export default {
 }
 
 /* ===== iPad/Tablet 再放大一点 ===== */
-@media (min-width: 768px) and (max-width: 1200px){
+@media (min-width: 768px) and (max-width: 1300px){
   .title--mobile{
     top: 16px;
     right: 18px;

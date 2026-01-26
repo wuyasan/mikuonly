@@ -291,8 +291,8 @@ export default {
 
   methods: {
     updateIsMobile() {
-      // 与 conduct_child / conduct.vue 统一：<=1200 走卡片版（含 iPad）
-      this.isMobile = window.matchMedia("(max-width: 1200px)").matches;
+      // 与 conduct_child / conduct.vue 统一：<=1300 走卡片版（含 iPad）
+      this.isMobile = window.matchMedia("(max-width: 1300px)").matches;
     },
   },
 }
@@ -398,8 +398,8 @@ export default {
 
 .cos-mobile-section li { margin-bottom: 8px; }
 
-/* ===== Tablet 再放大一档（768~1200）===== */
-@media (min-width: 768px) and (max-width: 1200px) {
+/* ===== Tablet 再放大一档（768~1300）===== */
+@media (min-width: 768px) and (max-width: 1300px) {
   .cos-mobile-card { padding: 22px; border-radius: 20px; }
   .cos-mobile-title { font-size: 36px; }
   .cos-mobile-sub { font-size: 18px; }
@@ -410,7 +410,7 @@ export default {
 }
 
 /* ===== 固定 Title：Mobile + Tablet 都钉在整页右上角 ===== */
-@media (max-width: 1200px){
+@media (max-width: 1300px){
   .title--mobile{
     position: fixed !important;
     top: 12px;
@@ -455,7 +455,7 @@ export default {
 }
 
 /* iPad/Tablet title 再大一点 */
-@media (min-width: 768px) and (max-width: 1200px){
+@media (min-width: 768px) and (max-width: 1300px){
   .title--mobile{
     top: 16px;
     right: 18px;
