@@ -1,5 +1,72 @@
 <template>
-  <div style="position: absolute; background: rgba(241, 241, 241, 0.6); height: 90vh; width: 90vh; left: 89vh; top: 5vh;">
+  <div v-if="isMobile" class="m-shell">
+    <!-- tabs -->
+    <div class="m-tabs">
+      <div class="m-tab" :class="{ active: mobileTab === 'floor' }" @click="mobileTab='floor'">FLOOR</div>
+      <div class="m-tab" :class="{ active: mobileTab === 'schedule' }" @click="mobileTab='schedule'">SCHEDULE</div>
+      <div class="m-tab" :class="{ active: mobileTab === 'other' }" @click="mobileTab='other'">????</div>
+    </div>
+
+    <!-- panel -->
+    <div class="m-panel">
+      <div class="m-scroll">
+
+        <!-- FLOOR TAB -->
+        <div v-if="mobileTab==='floor'">
+          <!-- floor switch 控件：同时控制两张卡片 -->
+          <div class="m-floor-switch">
+            <button class="m-floor-btn" @click="setfloor(false)">◀</button>
+
+            <div class="m-floor-mid">
+              <div class="m-floor-num"><span style="opacity:.4">0</span>{{ curfloor }}</div>
+              <div class="m-floor-name">{{ fl2word[curfloor] }}</div>
+            </div>
+
+            <button class="m-floor-btn" @click="setfloor(true)">▶</button>
+          </div>
+
+          <!-- Card 1：图片 -->
+          <div class="m-card">
+            <div class="m-card-title">FLOOR PLAN</div>
+            <!-- ✅ public 静态资源建议写成 /fl1.png，不要写 /public/fl1.png -->
+            <img class="m-img" :src="`/fl${curfloor}.png`" alt="floor" />
+          </div>
+
+          <!-- Card 2：Amenities -->
+          <div class="m-card">
+            <div class="m-card-title">AMENITIES</div>
+
+            <div class="m-amenities">
+              <div class="m-amenity" v-for="(item, idx) in amenities[curfloor]" :key="idx">
+                <span class="m-dot"></span>
+                <span class="m-item">{{ item }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCHEDULE TAB（占位） -->
+        <div v-else-if="mobileTab==='schedule'">
+          <div class="m-card">
+            <div class="m-card-title">SCHEDULE</div>
+            <div class="m-text">Under Construction</div>
+          </div>
+        </div>
+
+        <!-- OTHER TAB（占位） -->
+        <div v-else>
+          <div class="m-card">
+            <div class="m-card-title">????</div>
+            <div class="m-text">Under Construction</div>
+          </div>
+        </div>
+
+        <div style="height:24px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div v-else style="position: absolute; background: rgba(241, 241, 241, 0.6); height: 90vh; width: 90vh; left: 89vh; top: 5vh;">
     <horizontalttl />
     <div class="fg" style="position:absolute;width:70vh;height:100vh;left:-70vh;top:-11%;">
       <img class='flfigure' :src="`fl${curfloor}.png`" style="position: absolute;height: 61%;left: 34.5%;top: 9.8%;mix-blend-mode: multiply;filter: drop-shadow(rgba(0, 0, 118, 0.2) 4vh 4vh 1vh);">
@@ -119,15 +186,19 @@
 import { mapActions, mapState } from 'pinia'
 import { useUserStore } from '../stores/store'
 import horizontalttl from './horizontalttl.vue'
-import gem from '../components/gem.vue';
-
-//const text = ref('# Hello Editor');
+import gem from '../components/gem.vue'
 
 export default {
   components: { horizontalttl, gem },
 
   data() {
     return {
+      // ✅ mobile
+      isMobile: false,
+      mobileTab: 'floor',
+      _onResize: null,
+
+      // 你原来的
       curfloor: 1,
       fl2word: ['BASEMENT', 'FIRST FLOOR', 'SECOND FLOOR', 'THIRD FLOOR', 'gem'],
       unvisited: { 'upel': true, 'dnel': true },
@@ -139,35 +210,53 @@ export default {
         3: ['Maid Cafe', 'Rooftop Lounge', 'VIP Rest Area', 'Photo Booth 4'],
       },
     }
-
-
   },
 
   computed: {
     ...mapState(useUserStore, ['stateDump']),
-
   },
 
   methods: {
     ...mapActions(useUserStore, ['sendchat', 'getUsername']),
+
+    // ✅ desktop 那些菱形点击用的（你原来 template 里有 @click="selectFloor(x)"，但 script 里没定义，会报错）
+    selectFloor(n) {
+      if (n < 0 || n > 3) return
+      this.curfloor = n
+      // 同步一下 unvisited（可选）
+      this.unvisited.upel = false
+      this.unvisited.dnel = false
+    },
+
+    // ✅ 你原来的切楼层逻辑（我只改了上限下限，让 0~3 都可切）
     setfloor(isInc) {
-      if (this.curfloor < 1 && !isInc) return
-      if (this.curfloor > 2 && isInc) return
+      if (!isInc && this.curfloor <= 0) return
+      if (isInc && this.curfloor >= 3) return
+
       if (isInc) {
         this.curfloor += 1
         this.unvisited['upel'] = false
-      }
-      else {
+      } else {
         this.curfloor -= 1
         this.unvisited['dnel'] = false
       }
+    },
 
-    }
+    // ✅ mobile 判断
+    updateIsMobile() {
+      this.isMobile = window.matchMedia("(max-width: 1025px)").matches
+    },
   },
 
-  mounted() { },
+  mounted() {
+    this.updateIsMobile()
+    this._onResize = () => this.updateIsMobile()
+    window.addEventListener("resize", this._onResize, { passive: true })
+  },
 
-  updated() { },
+  beforeUnmount() {
+    if (this._onResize) window.removeEventListener("resize", this._onResize)
+  },
 }
 </script>
 <style>
@@ -233,5 +322,152 @@ export default {
     width: 100%;
   }
 
+}
+
+.m-shell{
+  position:absolute;
+  inset:0;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.m-tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.m-tab{
+  flex:1;
+  text-align:center;
+  padding:10px 0;
+  border-radius:999px;
+  background: rgba(0,0,0,0.12);
+  color:#111;
+  font-family: font5;
+  font-weight:900;
+  letter-spacing: 0.2vh;
+  cursor:pointer;
+  user-select:none;
+}
+
+.m-tab.active{
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+.m-panel{
+  position:relative;
+  height: calc(100vh - 70px);
+  border-radius: 16px;
+  background: rgba(241,241,241,0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow:hidden;
+}
+
+.m-scroll{
+  height:100%;
+  overflow:auto;
+  padding: 14px;
+  box-sizing:border-box;
+}
+
+.m-floor-switch{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.m-floor-btn{
+  width:44px;
+  height:44px;
+  border-radius: 12px;
+  border:none;
+  background: rgba(0,0,0,0.15);
+  font-size: 18px;
+  cursor:pointer;
+}
+
+.m-floor-mid{
+  flex:1;
+  text-align:center;
+}
+
+.m-floor-num{
+  font-family: font4;
+  font-size: 28px;
+  font-weight:900;
+  line-height: 1;
+}
+
+.m-floor-name{
+  font-family: font5;
+  font-size: 14px;
+  font-weight:900;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.m-card{
+  background: rgba(255,255,255,0.75);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+  margin-bottom: 12px;
+}
+
+.m-card-title{
+  font-family: font5;
+  font-weight: 900;
+  letter-spacing: 0.25vh;
+  margin-bottom: 10px;
+  color:#333;
+}
+
+.m-img{
+  width:100%;
+  border-radius: 12px;
+  display:block;
+}
+
+.m-amenities{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.m-amenity{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(175,175,175,0.35);
+}
+
+.m-dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background: rgba(0,162,255,0.9);
+  margin-top:4px;
+  flex: 0 0 auto;
+}
+
+.m-item{
+  font-family: font2;
+  font-size: 14px;
+  line-height: 18px;
+  color:#111;
+}
+
+.m-text{
+  font-family: font2;
+  font-size: 14px;
+  line-height: 18px;
+  opacity: 0.8;
 }
 </style>
