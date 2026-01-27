@@ -1,46 +1,37 @@
 <template>
   <div v-if="isMobile" class="m-shell">
-    <!-- tabs -->
-    <div class="m-tabs">
-      <div class="m-tab" :class="{ active: mobileTab === 'floor' }" @click="mobileTab='floor'">FLOOR</div>
-      <div class="m-tab" :class="{ active: mobileTab === 'schedule' }" @click="mobileTab='schedule'">SCHEDULE</div>
-      <div class="m-tab" :class="{ active: mobileTab === 'other' }" @click="mobileTab='other'">????</div>
-    </div>
+    <div class="fp2-bg" :style="{ backgroundImage: `url(${desktopAssets.pageBg})` }" aria-hidden="true"></div>
 
     <!-- panel -->
     <div class="m-panel">
       <div class="m-scroll">
 
-        <!-- FLOOR TAB -->
-        <div v-if="mobileTab==='floor'">
-          <!-- floor switch 控件：同时控制两张卡片 -->
-          <div class="m-floor-switch">
-            <button class="m-floor-btn" @click="setfloor(false)">◀</button>
+        <!-- FLOOR ONLY -->
+        <div class="m-floor-switch">
+          <button class="m-floor-btn" @click="setfloor(false)">◀</button>
 
-            <div class="m-floor-mid">
-              <div class="m-floor-num"><span style="opacity:.4">0</span>{{ curfloor }}</div>
-              <div class="m-floor-name">{{ fl2word[curfloor] }}</div>
-            </div>
-
-            <button class="m-floor-btn" @click="setfloor(true)">▶</button>
+          <div class="m-floor-mid">
+            <div class="m-floor-num"><span style="opacity:.4">0</span>{{ curfloor }}</div>
+            <div class="m-floor-name">{{ fl2word[curfloor] }}</div>
           </div>
 
-          <!-- Card 1：图片 -->
-          <div class="m-card">
-            <div class="m-card-title">FLOOR PLAN</div>
-            <!-- ✅ public 静态资源建议写成 /fl1.png，不要写 /public/fl1.png -->
-            <img class="m-img" :src="`/fl${curfloor}.png`" alt="floor" />
-          </div>
+          <button class="m-floor-btn" @click="setfloor(true)">▶</button>
+        </div>
 
-          <!-- Card 2：Amenities -->
-          <div class="m-card">
-            <div class="m-card-title">AMENITIES</div>
+        <!-- Card 1：图片 -->
+        <div class="m-card">
+          <div class="m-card-title">FLOOR PLAN</div>
+          <img class="m-img" :src="`/fl${curfloor}.png`" alt="floor" />
+        </div>
 
-            <div class="m-amenities">
-              <div class="m-amenity" v-for="(item, idx) in amenities[curfloor]" :key="idx">
-                <span class="m-dot"></span>
-                <span class="m-item">{{ item }}</span>
-              </div>
+        <!-- Card 2：Amenities -->
+        <div class="m-card">
+          <div class="m-card-title">AMENITIES</div>
+
+          <div class="m-amenities">
+            <div class="m-amenity" v-for="(item, idx) in amenities[curfloor]" :key="idx">
+              <span class="m-dot"></span>
+              <span class="m-item">{{ item }}</span>
             </div>
           </div>
         </div>
@@ -218,7 +209,6 @@ export default {
     return {
       // ✅ mobile
       isMobile: false,
-      mobileTab: 'floor',
       _onResize: null,
 
       // 你原来的
@@ -699,31 +689,6 @@ export default {
   box-sizing: border-box;
 }
 
-.m-tabs{
-  display:flex;
-  gap:10px;
-  margin-bottom:12px;
-}
-
-.m-tab{
-  flex:1;
-  text-align:center;
-  padding:10px 0;
-  border-radius:999px;
-  background: rgba(0,0,0,0.12);
-  color:#111;
-  font-family: font5;
-  font-weight:900;
-  letter-spacing: 0.2vh;
-  cursor:pointer;
-  user-select:none;
-}
-
-.m-tab.active{
-  background: rgba(255,255,255,0.7);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-}
-
 .m-panel{
   position:relative;
   height: calc(100vh - 70px);
@@ -732,6 +697,7 @@ export default {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   overflow:hidden;
+  margin-top: 10px;
 }
 
 .m-scroll{
