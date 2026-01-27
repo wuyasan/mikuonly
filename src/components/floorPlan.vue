@@ -78,7 +78,7 @@
           ></div>
 
           <div class="fp2-planSlot">
-            <img class="fp2-planImg" :src="`/fl${curfloor}.png`" alt="floor plan" />
+            <img class="fp2-planImg" :src="`/fl${curfloor}_h.png`" alt="floor plan" />
           </div>
         </div>
       </section>
