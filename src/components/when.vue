@@ -1,106 +1,92 @@
 <template>
-  <div style="position: absolute;background: rgba(241, 241, 241, 0.6);height: 200%;width: 81vh;right: 15vh;top: -64%;">
+  <div class="when-wrap">
     <horizontalttl />
 
-    <div
-        class="when"
-        style="position: absolute; background: rgba(241, 241, 241, 0.6); height: 100%; right: 0; top: 0; overflow: hidden;"
-    >
-<!--      <div-->
-<!--          class="glance"-->
-<!--          style="position:absolute;height:63%;color: #ffffff;top:19%;transform:rotateZ(90deg);font-family:font9;font-size:13vh;left: -58%;"-->
-<!--      >-->
-<!--        BE ON TIME!-->
-<!--      </div>-->
-
-      <div class="windowHandle" style="position:absolute;width:100%;height:3%;background:white;top:0%;overflow:hidden;">
-        <div style="position:absolute;top:-25%;color:#00000026;font-family:font9;font-size:2.5vh;font-weight:900;">
-          W H E N
-        </div>
+    <div class="when-panel">
+      <!-- 顶部把手条 -->
+      <div class="windowHandle-when">
+        <div class="handleText">W H E N</div>
       </div>
 
-      <div class="header1" style="position:absolute;width:100%;height:3%;top:4%;">
-        <div style="position:absolute;top:-25%;color:#0000009e;font-family:font5;font-size:1.2vh;left:3%;">
-          INFORMATION DISTRIBUTED BY
-        </div>
-        <div style="position:absolute;top:-25%;color:#0000009e;font-family:font5;font-size:1.2vh;right:3%;">
-          MIKU ONLY TEAM
-        </div>
-        <div class="timeboard">
-          <img class="timeboard__img" src="/时间板块.png" alt="timeboard" />
-        </div>
-<!--        <div style="position:absolute;top:267%;color:#0000009e;font-family:font5;font-size:1.2vh;right:3%;">-->
-<!--          LAST UPDATED-->
+      <!-- 顶部 meta（你原本那条） -->
+<!--      <div class="time-board__meta">-->
+<!--        <div class="meta-left">-->
+<!--          <div class="meta-sub">INFORMATION DISTRIBUTED BY</div>-->
 <!--        </div>-->
-<!--        <div-->
-<!--            style="position:absolute;top:27%;color:#717171;font-family:font9;font-size:4.3vh;left: 2.5%;letter-spacing: 4.3vh;width:100%;"-->
-<!--        >-->
-<!--          MEETING TIME-->
-<!--        </div>-->
-      </div>
-
-<!--      <div class="glance" style="position:absolute;width:100%;height:3%;top:20%;">-->
-<!--        <div-->
-<!--            style="position:absolute;top:0%;background:#00adff;font-family:font5;font-size:1.2vh;left:3%;width:6%;height:146%;filter:drop-shadow(0.6vh 6px 5.7px rgba(100,100,100.01));"-->
-<!--        ></div>-->
-
-<!--        <div style="position:absolute;top:-66%;color:#717171;font-family:font9;font-size:6vh;right:-40%;width:105%;">-->
-<!--          07,-->
-<!--          <span-->
-<!--              style="background:#454545;color:white;mix-blend-mode:multiply;filter:drop-shadow(0.6vh 6px 5.7px rgba(100,100,100.01));"-->
-<!--          >-->
-<!--            March,-->
-<!--          </span>-->
-<!--          2026-->
+<!--        <div class="meta-right">-->
+<!--          <div class="meta-team">MIKU ONLY TEAM</div>-->
 <!--        </div>-->
 <!--      </div>-->
 
-      <!-- ✅ 用 时间板块.png 替代倒计时区域：占满 when 宽度 -->
+      <!-- 时间板块（保留你的图层） -->
+      <section class="time-board" aria-label="Meeting time board">
+        <img class="time-board__bg" src="/时间板块.png" alt="" aria-hidden="true" />
+      </section>
 
-
-      <div class="img-txt-expand" style="position:absolute;top:62%;width:100%;left:4%;">
-        <div
-            style="position: absolute;top: 16.5vh;left: 1%;width: 70%;font-family: font5;font-size: 1.5vh;height: 30vh;overflow: auto;line-height: 1.8vh;text-align: left;"
-        >
-          MikuOnly NYC 2026 is officially starting!<br />
-          Cross the screen and step into the spotlight, where your performance brings the virtual world to life.<br />
-          Kick off your year on our stage with melodies of magic and symphonies of dreams.<br />
-        </div>
-
-        <div
-            style="position:absolute;top:8vh;left:70%;width:24vh;height:24vh;background-image: radial-gradient(rgb(0 0 0 / 51%) 0.2vh, transparent 0);background-size:6vh 6vh;background-position:-19px -19px;"
-        ></div>
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="position:absolute;left: 61%;top: -7vh;width: 32%;opacity: 0.1;">
-          <path
-              d="M224 64C206.3 64 192 78.3 192 96L192 128L160 128C124.7 128 96 156.7 96 192L96 240L544 240L544 192C544 156.7 515.3 128 480 128L448 128L448 96C448 78.3 433.7 64 416 64C398.3 64 384 78.3 384 96L384 128L256 128L256 96C256 78.3 241.7 64 224 64zM96 288L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 288L96 288z"
-          ></path>
-        </svg>
-      </div>
-
-      <div style="position:absolute;width:100%;height:0.3%;background:#ffffff;bottom:0%;overflow:hidden;"></div>
-
-      <div @click="goTicket" class="get-ticket" style="position: absolute;width: 44%;height: 7vh;top: 64%;overflow: hidden;left: 5%;cursor: pointer;">
-        <div style="position:absolute;top: -12vh;left: -51%;font-family:font1;font-size:2vh;background: #00000026;border-radius:50%;width: 32vh;height: 32vh;"></div>
-        <div style="position:absolute;top: -12vh;left: -40%;font-family:font1;font-size:2vh;background: #0000001f;border-radius:50%;width: 32vh;height: 32vh;"></div>
-        <div style="position:absolute;top: -12vh;left: -63%;font-family:font1;font-size:2vh;background: #00000066;border-radius:50%;width: 32vh;height: 32vh;"></div>
-
-        <div style="position:absolute;top: 62%;left: 52%;font-family: font11;font-size:2vh;color:rgba(230,230,230,1);font-weight: 900;">
-          Get Ticket
-        </div>
-
-        <div style="position:absolute;top: 17%;left: 52%;font-family: font5;font-size: 3vh;color:rgba(230,230,230,1);font-weight: 900;">
-          TICKETING
-        </div>
-
+      <!-- 售票区域（grid 内稳定布局） -->
+      <section class="ticket-area" aria-label="Ticketing">
         <img
-            src="/public/tickets.png"
-            style="position:absolute;top: 2%;left: -1%;font-family: font5;font-size: 3vh;color:white;font-weight: 900;width: 9vh;mix-blend-mode: screen;filter: invert(100%) grayscale(100%);"
+            class="ticketing-card__frame"
+            src="/Tiket选框.png"
+            alt=""
+            aria-hidden="true"
         />
-      </div>
-    </div>
+        <div class="ticketing-box">
+          <div class="ticketing-cards">
+            <a
+                class="ticketing-card"
+                :class="{ active: activeTicket === 'entry' }"
+                :href="ticketLinks.entry"
+                target="_blank"
+                rel="noreferrer"
+                @mouseenter="activeTicket='entry'"
+                @mouseleave="activeTicket=null"
+            >
+              <img class="ticketing-card__img" src="/entry.png" alt="Entry Admission" />
+            </a>
 
-    <div class="bottomline1" style="position:absolute;width:100%;height: 0.2%;background:white;"></div>
+            <a
+                class="ticketing-card"
+                :class="{ active: activeTicket === 'general' }"
+                :href="ticketLinks.general"
+                target="_blank"
+                rel="noreferrer"
+                @mouseenter="activeTicket='general'"
+                @mouseleave="activeTicket=null"
+            >
+              <img class="ticketing-card__img" src="/General.png" alt="General Admission" />
+            </a>
+
+            <a
+                class="ticketing-card"
+                :class="{ active: activeTicket === 'vip' }"
+                :href="ticketLinks.vip"
+                target="_blank"
+                rel="noreferrer"
+                @mouseenter="activeTicket='vip'"
+                @mouseleave="activeTicket=null"
+            >
+              <img class="ticketing-card__img" src="/VIP.png" alt="VIP Admission" />
+
+            </a>
+          </div>
+          <a
+              class="ticketing-banner"
+              :href="ticketLinks.tickets"
+              target="_blank"
+              rel="noreferrer"
+              @mouseenter="bannerHover=true"
+              @mouseleave="bannerHover=false"
+          >
+            <img
+                class="ticketing-banner__img"
+                :src="bannerHover ? '/Tiket_SELECTED.png' : '/Tiket_normal.png'"
+                alt="Ticketing"
+            />
+          </a>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -108,75 +94,227 @@
 import { mapActions, mapState } from "pinia";
 import { useUserStore } from "../stores/store";
 import horizontalttl from "./horizontalttl.vue";
-import gem from "./gem.vue";
 
 export default {
-  components: { gem, horizontalttl },
+  components: { horizontalttl },
 
   data() {
     return {
-      nowTs: Date.now(),
-      _etaTimer: null,
+      ticketLinks: {
+        tickets: "https://www.ny-miku-only.com/ticket-1",
+        entry: "https://www.ny-miku-only.com/event-details/miku-only-ny-2026-entry-admission",
+        general: "https://www.ny-miku-only.com/event-details/miku-only-ny-2026-general-admission",
+        vip: "https://www.ny-miku-only.com/event-details/miku-only-ny-2026-vip-admission",
+      },
+
+      activeTicket: null, // 'entry' | 'general' | 'vip'
+      bannerHover: false,
     };
   },
 
   computed: {
     ...mapState(useUserStore, ["stateDump"]),
-
-    // ✅ JS月份从0开始：3月=2
-    targetTs() {
-      return new Date(2026, 2, 7, 0, 0, 0, 0).getTime();
-    },
-
-    etaArr() {
-      let diffMs = this.targetTs - this.nowTs;
-      if (diffMs <= 0) return [0, 0, 0];
-
-      const totalSec = Math.floor(diffMs / 1000);
-      const hh = Math.floor(totalSec / 3600);
-      const mm = Math.floor((totalSec % 3600) / 60);
-      const ss = totalSec % 60;
-
-      return [hh, mm, ss];
-    },
-
-    etaHH() {
-      return this.etaArr[0];
-    },
-    etaMM() {
-      return String(this.etaArr[1]).padStart(2, "0");
-    },
-    etaSS() {
-      return String(this.etaArr[2]).padStart(2, "0");
-    },
-    etaGhost() {
-      // 你原来用的是一个很淡的大数字，这里用总小时更合理
-      return this.etaArr[0];
-    },
-  },
-
-  mounted() {
-    this._etaTimer = setInterval(() => {
-      this.nowTs = Date.now();
-    }, 250);
-  },
-
-  beforeUnmount() {
-    clearInterval(this._etaTimer);
   },
 
   methods: {
     ...mapActions(useUserStore, ["sendchat", "getUsername"]),
-
-    goTicket() {
-      window.open("https://www.ny-miku-only.com/ticket-1");
-    },
   },
 };
 </script>
 
 <style>
-.bottomline1 {
+/* ✅ 外壳：不再用 top:-64% / height:200% / vh 无限放大 */
+.when-wrap{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+
+/* ✅ Grid 主容器 + 整体背景图替换 */
+.when-panel{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-rows:
+     6%
+        35%         /* time-board 自己按比例撑开 */
+        2%         /* ✅ divider 行高度 */
+        50%        /* ticket */
+        5%
+        2%;
+
+  row-gap: 0;
+  background-image: url("/白底_文字.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:95%;
+
+
+  animation-name: when;
+  animation-delay: 0.2s;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
+  animation-fill-mode: forwards;
+}
+
+/* 顶部把手条 */
+.windowHandle-when{
+  grid-row: 1;
+  margin-top: 1vw;
+  left: 1.5vw;
+  position: relative;
+  z-index: 5;
+}
+.handleText{
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  color: #00000026;
+  font-family: font9;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* meta bar */
+.time-board__meta{
+  grid-row: 2;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 14px;
+  z-index: 4;
+  pointer-events: none;
+}
+.meta-left .meta-sub,
+.meta-right .meta-team{
+  font-family: font5;
+  font-size: 14px;
+  color: rgba(0,0,0,0.45);
+  letter-spacing: 0.06em;
+}
+
+/* ✅ time-board 高度跟随背景图比例（推荐） */
+.time-board{
+  grid-row: 2;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2048 / 640;
+  overflow: hidden;
+
+  margin-top: 2vw;     /* ✅ 用 margin 控距离 */
+  margin-bottom: 0.8vw;  /* ✅ 给 divider 留空间 */
+}
+
+.when-divider{
+  grid-row: 3;
+  align-self: center;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  opacity: 0.9;
+}
+
+/* ✅ 背景图始终铺满容器，容器多高它就多高 */
+.time-board__bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;         /* cover=铺满不留白；想完整显示用 contain */
+}
+
+
+/* ticket area */
+.ticket-area{
+  grid-row: 4;
+  position: relative;
+  z-index: 3;
+}
+
+.ticketing-box{
+  position: relative;
+  padding-top: 3vw;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 三张票卡 */
+.ticketing-cards{
+  display: flex;
+  justify-content: center;
+  gap: clamp(14px, 2vh, 22px);
+  flex-wrap: wrap;             /* ✅ 允许换行 */
+  align-items: flex-start;
+}
+
+.ticketing-card{
+  position: relative;
+  display: block;
+  width: 20vh;
+  aspect-ratio: 3 / 4;
+  text-decoration: none;
+
+  transform: translateY(0);
+  transition: transform .18s ease, filter .18s ease;
+}
+.ticketing-card:hover{
+  transform: translateY(-4px);
+}
+
+.ticketing-card__img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ✅ 票卡不要裁切，保持完整 */
+}
+
+.ticketing-card__frame{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1vw 3vw 2vw;
+}
+
+.ticketing-banner{
+  position: relative;          /* ✅ 不压在票卡上 */
+  flex: 0 0 100%;              /* ✅ 强制单独一行 */
+  display: flex;
+  justify-content: flex-end;   /* ✅ 靠右 */
+  padding-right: 3vw;
+  width: 100%;
+}
+
+.ticketing-banner:hover{
+  transform: translateY(-2px);
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.18));
+}
+
+.ticketing-banner__img{
+  position: relative;
+  width: 20vw;
+  height: auto;
+  object-fit: contain;
+}
+
+/* bottom line */
+.bottomline1{
+  grid-row: 5;
+  width: 100%;
+  height: 2px;
+  background: white;
+  align-self: end;
+
   animation-name: bottomline1;
   animation-delay: 0s;
   animation-duration: 0.3s;
@@ -185,117 +323,255 @@ export default {
   animation-fill-mode: forwards;
 }
 
-@keyframes bottomline1 {
-  0% { opacity: 0; bottom: 3%; }
-  100% { opacity: 1; bottom: -2.5%; }
+/* 动画 */
+@keyframes when{
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes bottomline1{
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-.get-ticket {
-  background: #2196f3;
-  filter: drop-shadow(2vh 2vh 2vh rgba(0,0,0,0.5));
-}
-.get-ticket:hover {
-  background: #ffffff;
-  filter: drop-shadow(3vh 3vh 3vh #2196f3);
-}
+/* ✅ 1300 以下（移动/窄屏）：整体转为相对布局更稳 */
+@media (max-width: 1300px){
+  .when-wrap{
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 12px auto;
+    width: min(92vw, 560px);
+    height: auto;
+  }
 
-.when {
-  animation-name: when;
-  animation-delay: 0.8s;
-  animation-duration: 0.7s;
-  animation-iteration-count: 1;
-  animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
-  animation-fill-mode: forwards;
-}
-@keyframes when {
-  0% { opacity: 0; width: 90%; }
-  100% { opacity: 1; width: 100%; }
-}
+  .when-panel{
+    background-size: cover;
+    background-image: url("/白底.png");
+    grid-template-rows:
+      6%
+        35%         /* time-board 自己按比例撑开 */
+        2%         /* ✅ divider 行高度 */
+        50%        /* ticket */
+        5%
+        2%
+  }
 
-/* =========================
-   ✅ 时间板块（满宽 + 自适应）
+  .handleText{
+    position: absolute;
+    color: #00000066;
+    font-family: font9;
+    font-size: 26px;
+    font-weight: 900;
+  }
+
+  .ticketing-card__frame{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1vw 3vw 2vw;
+  }
+
+  .ticketing-cards{
+    flex-wrap: wrap;
+  }
+
+  .ticketing-card{
+    width: min(42vw, 180px);
+  }
+
+  .ticketing-banner{
+    width: min(68vw, 340px);
+  }
+
+  @media (max-width: 1300px){
+    .when-wrap{
+      position: relative;
+      margin: 0 auto;
+      width: min(92vw, 560px);
+      height: auto;              /* ✅ 不要 100% */
+    }
+
+    .when-panel{
+      height: auto;              /* ✅ 关键：别撑满整屏 */
+      overflow: visible;         /* ✅ 让内容自然撑开 */
+
+      display: grid;
+      grid-template-rows:
+        6%
+        35%         /* time-board 自己按比例撑开 */
+        2%         /* ✅ divider 行高度 */
+        50%        /* ticket */
+        5%
+        2%;
+
+      row-gap: 10px;             /* ✅ 用 gap 控间距，不用 vw 行高 */
+
+      background-size: 95%;
+      background-position: center top;
+    }
+
+    .time-board{
+      width: 100%;
+      aspect-ratio: 2048 / 640;
+      margin: 0;                 /* ✅ 清掉你之前的 vw margin */
+    }
+
+    .ticket-area{
+      position: relative;     /* ✅ 票区留一点呼吸 */
+    }
+
+    .ticketing-box{
+      padding-top: 5vw;
+    }
+
+    .ticketing-cards{
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .ticketing-card{
+      width: min(42vw, 180px);
+    }
+
+    /* ✅ 横条放到底下一行（你之前也要这个） */
+    .ticketing-banner{
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-left: -6px;
+      margin-top: 8px;
+      right: auto;
+      bottom: auto;
+    }
+
+    .ticketing-banner__img{
+      position: relative;
+      width: 40vw;
+      height: auto;
+    }
+  }
+
+  /* =========================
+   iPad / Tablet（769~1300）：铺满页面
    ========================= */
-.timeboard{
-  position:absolute;
-  top:36%;
-  left:0;
-  width:100%;
-  aspect-ratio: 3.4 / 1; /* 不对就调这个比例 */
-  pointer-events:none;
-}
+  @media (min-width: 769px) and (max-width: 1300px){
+    .when-wrap{
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
 
-.timeboard__img{
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit: contain;
-}
+    .when-panel{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
 
-/* 叠字：百分比定位 + clamp 自适应 */
-.timeboard__eta{
-  position:absolute; left: 6%; top: 18%;
-  color:#717171; font-family:font9;
-  font-size: clamp(14px, 2.2vw, 4.3vh);
-}
-.timeboard__sub{
-  position:absolute; left: 6.3%; top: 35%;
-  color:#717171; font-family:font9;
-  font-size: clamp(10px, 1.1vw, 1.3vh);
-}
+      /* 让上下结构更像桌面：上面时间板块大，下面票务 */
+      grid-template-rows:
+        6%
+        35%         /* time-board 自己按比例撑开 */
+        2%         /* ✅ divider 行高度 */
+        50%        /* ticket */
+        5%
+        2%;
+      row-gap: 14px;
 
-.timeboard__hh{
-  position:absolute; left: 6%; top: 42%;
-  color:#00adff; font-family:font9;
-  font-size: clamp(42px, 6.5vw, 11.3vh);
-  line-height:1;
-}
-.timeboard__hr{
-  position:absolute; left: 46%; top: 56%;
-  color:#00adff; font-family:font9;
-  font-size: clamp(12px, 1.8vw, 3.1vh);
-}
+      /* ✅ 背景在 iPad 用 cover（铺满，不要像手机那样 contain 留空） */
+      background-size: cover;
+      background-position: center;
+      background-image: url("/白底.png");
+    }
 
-.timeboard__mm{
-  position:absolute; left: 52%; top: 60%;
-  color:#919191; font-family:font9;
-  font-size: clamp(20px, 3vw, 5.4vh);
-}
-.timeboard__min{
-  position:absolute; left: 63%; top: 72%;
-  color:#919191; font-family:font9;
-  font-size: clamp(10px, 1.2vw, 1.8vh);
-}
+    .time-board{
+      width: 100%;
+      /* iPad 上让时间板块更“占屏”一点 */
+      max-height: 38vh;
+      margin: 3vw;
+    }
 
-.timeboard__ss{
-  position:absolute; left: 70%; top: 60%;
-  color:#919191; font-family:font9;
-  font-size: clamp(20px, 3vw, 5.4vh);
-  opacity: 0.85;
-}
-.timeboard__sec{
-  position:absolute; left: 81%; top: 72%;
-  color:#919191; font-family:font9;
-  font-size: clamp(10px, 1.2vw, 1.8vh);
-  opacity: 0.85;
-}
+    .ticket-area{
+      position: relative;
+    }
 
-.timeboard__ghost{
-  position:absolute; left: 68%; top: -10%;
-  color: rgba(145,145,145,0.17); font-family:font9;
-  font-size: clamp(70px, 10vw, 18.4vh);
-}
+    .ticketing-cards{
+      gap: 18px;
+    }
 
-.timeboard__until{
-  position:absolute; right: 10%; top: 66%;
-  color:#919191; font-family:font9;
-  font-size: clamp(14px, 2.2vw, 3.8vh);
-}
-.timeboard__start{
-  position:absolute; right: 9%; top: 78%;
-  color:#eeecee; font-family:font9;
-  font-size: clamp(12px, 1.6vw, 2.4vh);
-  background:#515151;
-  padding: 0.3em 0.8em;
-  filter:drop-shadow(0.6vh 6px 5.7px rgba(100,100,100.01));
+    .ticketing-card{
+      width: min(22vw, 220px); /* iPad 上三张更大 */
+    }
+
+    /* ✅ Ticketing 横条放在三张卡下面，且不压住 */
+    .ticketing-banner{
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      right: auto;
+      bottom: auto;
+    }
+
+    .ticketing-banner__img{
+      position: relative;
+      width: 40vw;
+      height: auto;
+    }
+  }
+
+  /* =========================
+     Phone（<=768）：保持你之前的窄卡片
+     ========================= */
+  @media (max-width: 768px){
+    .when-wrap{
+      margin: 0 auto;
+      width: min(92vw, 560px);
+      height: auto;
+    }
+
+    .when-panel{
+      height: auto;
+      overflow: visible;
+
+      grid-template-rows:
+        6%
+        35%         /* time-board 自己按比例撑开 */
+        2%         /* ✅ divider 行高度 */
+        50%        /* ticket */
+        5%
+        2%;
+      row-gap: 10px;
+      background-size: 95%;
+      background-position: center top;
+    }
+
+    .ticketing-card{
+      width: 22vw;
+    }
+
+    .ticketing-banner{
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+      margin-right: 2vw;
+      right: auto;
+      bottom: auto;
+    }
+
+    .ticketing-banner__img{
+      position: relative;
+      width: 40vw;
+      height: auto;
+    }
+  }
+
+
 }
 </style>
