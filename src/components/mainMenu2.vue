@@ -32,15 +32,15 @@
 
         <nav class="img-nav">
           <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('info')">
-            <img :src="currentwindow === 'info' ? '/public/INFO_ON.png' : '/public/INFO_OFF.png'" alt="Info" />
+            <img :src="currentwindow === 'info' ? '/INFO_ON.png' : '/INFO_OFF.png'" alt="Info" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('schedule')">
-            <img :src="currentwindow === 'schedule' ? '/public/SCHEDULE_ON.png' : '/public/SCHEDULE_OFF.png'" alt="Schedule" />
+            <img :src="currentwindow === 'schedule' ? '/SCHEDULE_ON.png' : '/SCHEDULE_OFF.png'" alt="Schedule" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('conduct')">
-            <img :src="currentwindow === 'conduct' ? '/public/Conduct_ON.png' : '/public/Conduct_OFF.png'" alt="Conduct" />
+            <img :src="currentwindow === 'conduct' ? '/Conduct_ON.png' : '/Conduct_OFF.png'" alt="Conduct" />
           </button>
 
           <div class="img-row">
@@ -72,20 +72,20 @@
       <div class="desk-content">
         <nav class="img-nav desk-nav">
           <button class="img-btn img-btn--wide" type="button" @click="setWindow('info')">
-            <img :src="currentwindow === 'info' ? '/public/INFO_ON.png' : '/public/INFO_OFF.png'" alt="Info" />
+            <img :src="currentwindow === 'info' ? '/INFO_ON.png' : '/INFO_OFF.png'" alt="Info" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindow('schedule')">
-            <img :src="currentwindow === 'schedule' ? '/public/SCHEDULE_ON.png' : '/public/SCHEDULE_OFF.png'" alt="Schedule" />
+            <img :src="currentwindow === 'schedule' ? '/SCHEDULE_ON.png' : '/SCHEDULE_OFF.png'" alt="Schedule" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindow('conduct')">
-            <img :src="currentwindow === 'conduct' ? '/public/Conduct_ON.png' : '/public/Conduct_OFF.png'" alt="Conduct" />
+            <img :src="currentwindow === 'conduct' ? '/Conduct_ON.png' : '/Conduct_OFF.png'" alt="Conduct" />
           </button>
 
           <div class="img-row">
             <button class="img-btn img-btn--small" type="button" @click="setWindow('floorplan')">
-              <img src="/public/FLOOR%20PLAN.png" alt="Floor Plan" />
+              <img :src="currentwindow === 'floorplan' ? '/public/FLOORPLAN_SLECTED.png' : '/public/FLOOR%20PLAN.png'" alt="FloorPlan" />
             </button>
 
             <button class="img-btn img-btn--small" type="button" @click="openConductLink('prop')">

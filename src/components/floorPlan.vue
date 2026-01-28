@@ -47,6 +47,7 @@
   <div v-else class="fp-desktop2">
     <!-- page bg -->
     <div class="fp2-bg" :style="{ backgroundImage: `url(${desktopAssets.pageBg})` }" aria-hidden="true"></div>
+    <div class="fp2-bgw" :style="{ backgroundImage: `url(${desktopAssets.pageBgw})` }" aria-hidden="true"></div>
 
         <!-- ✅ 在这里插入立绘层 -->
     <img
@@ -232,6 +233,7 @@ export default {
 
       desktopAssets: {
         pageBg: "/background02.png",
+        pageBgw: "/纯白背景透图.png",
         keyVisual: "/角色灰白渐变.png",
 
         // ✅ 左右底板（包含小标题条/文字/装饰）
@@ -364,6 +366,16 @@ export default {
   background-size: cover;
   background-position: center;
   filter: saturate(1.02);
+}
+
+.fp2-bgw{
+  position:absolute;
+  inset:0;
+  background-size: cover;      /* 如果你想保持不拉伸，用 contain */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;                  /* 在 bg 上面 */
+  pointer-events: none;
 }
 
 .fp2-kv{
