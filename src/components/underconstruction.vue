@@ -9,6 +9,11 @@
       <div style="position:absolute;top:69%;left:34.5%;height:0vh;width:133.4vh;border-top:0.3vh dotted #0000003d;"></div>
       <div style="position:absolute;top:10%;left:95.5%;height:125vh;width:0.4vh;border-left:0.3vh dotted #0000003d;"></div>
       <div style="position:absolute;top:9.6%;left:-66.5%;height:0.4vh;width:248.4vh;background:black;"></div>
+      <img
+        class="extraImg"
+        src="/public/赛车miku.jpg"
+        alt=""
+      />
       <div style="position:absolute;bottom:-15%;font-family:font5;font-size:24vh;left:19%;font-weight:900;color:#000000;width:236vh;">Under Construction</div>
       <div style="position:absolute;top:24%;font-family:font5;font-size:5.4vh;left:104%;font-weight:900;color:#676767cc;width:63vh;line-height:4.4vh;">Please check everything after update</div>
       <div style="position:absolute;top:33%;font-family:font5;font-size:2.1vh;left:104%;font-weight:900;color:#676767cc;width:90vh;line-height:4.4vh;letter-spacing:3.5vh;">MIKU ONLY 2026</div><img class="flfigure" src="/public/Screenshot_20260110_202304.png" style="position:absolute;height:61%;left:34.5%;top:9.8%;mix-blend-mode:multiply;">
@@ -50,4 +55,22 @@ export default {
   updated() { },
 }
 </script>
-<style></style>
+<style>
+.extraImg{
+  position: absolute;
+
+  /* 固定在页面右侧 */
+  right: -125vh;        /* 离右边的距离，可调 */
+  top: 75%;          /* 垂直居中 */
+  transform:
+    scale(2.0)          /* 放大图片 */
+    translateY(-50%)
+    rotate(-90deg);  /* 👈 旋转 180° */
+
+  height: 40vh;      /* 用 vh 更稳 */
+  width: auto;
+
+  z-index: 4;
+  pointer-events: none; /* 不挡点击 */
+}
+</style>
