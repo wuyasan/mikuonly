@@ -11,6 +11,13 @@
       <!-- ① 地址头图（你图里那块：EVENT LOCATION + 地址） -->
       <section class="where-address" aria-label="Event location header">
         <img class="where-address__img" src="/Where_Tittle.png" alt="Event location" />
+        <a
+          class="where-address__click"
+          :href="mapUrl"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open event location in Google Maps"
+        ></a>
       </section>
 
       <!-- ② Photo slide -->
@@ -212,6 +219,14 @@ export default {
   object-fit: contain;
   object-position: right center; /* ✅ 内容靠右 */
   display: block;
+}
+
+.where-address--clickable{ position: relative; }
+.where-address__click{
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* ② Photo slide */
