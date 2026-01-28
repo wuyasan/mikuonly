@@ -1,264 +1,305 @@
 <template>
-  <div style="position: absolute;background: rgba(241, 241, 241, 0.6);height: 200%;width: 81vh;right: 15vh;top: -64%;">
+  <div class="who-wrap">
     <horizontalttl />
-    <div class="whopanel" style="position: absolute; background: rgba(241, 241, 241, 0.6); height: 100%; right: 0; top: 0; overflow: hidden;">
-      <!-- 背景层 -->
-      <img src="/city.jpg" style="position:absolute;left:0%;bottom:0vh;width:100%;" />
-      <div style="position:absolute;width:100%;height:80%;background:#ffffff;top:15%;overflow:hidden;"></div>
-      <div style="position:absolute;width:100%;height:66.3%;background:#ffffff8c;top:19%;overflow:hidden;"></div>
-      <div style="position:absolute;width:100%;height:66.3%;background:#ffffff8c;top:23%;overflow:hidden;"></div>
-      <img src="/team.png" style="position:absolute;width:79vh;right:-15.4%;top:40%;mix-blend-mode:multiply;opacity:0.1;">
 
-      <!-- 顶部标题条 -->
-      <div class="windowHandle" style="position:absolute;width:100%;height:3%;background:white;top:0%;overflow:hidden;">
-        <div style="position:absolute;top:-25%;color:#00000026;font-family:font9;font-size:2.5vh;font-weight:900;">W H O</div>
+    <div class="who-panel">
+      <div class="windowHandle">
+        <div class="handleText">W H O</div>
       </div>
 
-      <div class="header1" style="position:absolute;width:100%;height:3%;top:4%;">
-        <div style="position:absolute;top:-25%;color:#0000009e;font-family:font5;font-size:1.2vh;left:3%;">INFORMATION DISTRIBUTED BY</div>
-        <div style="position:absolute;top:-25%;color:#0000009e;font-family:font5;font-size:1.2vh;right:3%;">MIKU ONLY TEAM</div>
-        <div style="position:absolute;top:267%;color:#0000009e;font-family:font5;font-size:1.2vh;right:3%;">LAST UPDATED</div>
-        <div style="position:absolute;top:27%;color:#717171;font-family:font9;font-size:4.3vh;left:2.8%;letter-spacing:5.6vh;width:134%;">GUEST LIST</div>
-      </div>
-      <!--      <div class="glance" style="position:absolute;width:100%;height:3%;top:20%;">-->
-      <!--        <div style="position:absolute;top:0%;background:#f2a3ef;font-family:font5;font-size:1.2vh;left:3%;width:6%;height:146%;filter:drop-shadow(0.6vh 6px 5.7px rgba(100,100,100.01));"></div>-->
-      <!--        <div style="position:absolute;top:-66%;color:#717171;font-family:font9;font-size:4.3vh;left:10.8%;width:105%;">???????</div>-->
-      <!--      </div>-->
-      <!--      <div class="auxInfo" style="position:absolute;width:100%;height:3%;top:36%;"><div class="expboard" style="position:absolute;left: 8vh;top:-2vh;height:16vh;width:37vh;">-->
-      <!--        <div style="position:absolute;left:-19%;top:1%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;"></div>-->
-      <!--        <div style="position:absolute;left:-9%;top:35%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;opacity:0.5;"></div>-->
-      <!--        <div style="position:absolute;left:1%;top:1%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;opacity:0.25;"></div>-->
-      <!--        <div style="position:absolute;left:11%;top:35%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;"></div>-->
-      <!--        <div style="position:absolute;left:21%;top:1%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;opacity:0.5;"></div>-->
-      <!--        <div style="position:absolute;left:31%;top:35%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;opacity:0.25;"></div>-->
-      <!--        <div style="position:absolute;left:40.9%;top:1%;height:7vh;width:7vh;clip-path:polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);background:#b3b3b3;margin:auto;"></div>-->
-      <!-
-      <!-- 右侧 Guest 列表 -->
-      <div
-          class="auxInfo"
-          style="
-                  position:absolute;
-                  top:16%;          /* 原来是 36% 或 26%，往上提一点 */
-                  right:6vh;
-                  width:48vh;
-                  z-index: 5;
-                "
-      >
-        <div
-            class="guest-list"
-            style="
-                    display:grid;
-                    grid-template-columns:repeat(3, minmax(0, 1fr));
-                    column-gap:20vh;
-                    row-gap:6vh;
-                    justify-items:end;
-                    align-items:start;
-                  "
+      <!-- 顶部图（你原来 city + team 叠加的感觉） -->
+      <section class="who-hero" aria-label="Guests header">
+        <img class="who-hero__title" src="/guest_Tittle.png" alt="Special Guests" />
+      </section>
+
+      <!-- guests grid -->
+      <section class="who-grid" aria-label="Guest list">
+        <a
+            v-for="g in guests"
+            :key="g.id"
+            class="guest-card"
+            :href="`https://instagram.com/${g.insta}`"
+            target="_blank"
+            rel="noreferrer"
         >
-          <div
-              v-for="guest in guests"
-              :key="guest.id"
-              class="guestCard"
-              style="
-                      display:flex;
-                      align-items:center;
-                      justify-content:flex-end;
-                      width:100%;
-                    "
-          >
-            <!-- 文本 -->
-            <div style="text-align:right; margin-left:2vh;">
-              <!-- 头像 -->
-              <img
-                  :src="guest.avatar"
-                  :alt="guest.name + ' avatar'"
-                  style="
-                        width:15vh;
-                        height:15vh;
-                        border-radius:50%;
-                        object-fit:cover;
-                        box-shadow:0 0.6vh 1.4vh rgba(0,0,0,0.45);
-                        position:relative;
-                        z-index: 6;
-                      "
-              />
-              <div
-                  :style="{
-                              color: '#3d3d3d',
-                              fontFamily: 'font9',
-                              fontSize: getNameFontSize(guest.name),
-                              filter: 'drop-shadow(0.4vh 0.8vh 0.8vh rgba(0,0,0,0.3))'
-                            }"
-              >
-                {{ guest.name }}
-              </div>
+          <div class="guest-avatar">
+            <img :src="g.avatar" :alt="g.name" />
+          </div>
 
-
-              <div
-                  style="
-                          color:#000000;
-                          font-family:font9;
-                          font-size:1.4vh;
-                          letter-spacing:0.5vh;
-                          opacity:0.9;
-                        "
-              >
-                {{ guest.role }}
-              </div>
-
-              <div
-                  style="
-                          margin-top:0.4vh;
-                          font-family:font9;
-                          font-size:2vh;
-                        "
-              >
-                <a
-                    class="guest-link"
-                    :href="`https://www.instagram.com/${guest.insta}`"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style="color:#2b6fff; text-decoration:underline;"
-                >
-                  @{{ guest.insta }}
-                </a>
-              </div>
+          <div class="guest-info">
+            <div class="guest-name">{{ g.name }}</div>
+            <div class="guest-meta">
+              <span class="guest-role">{{ g.role }}</span>
+              <span class="guest-insta">@{{ g.insta }}</span>
             </div>
           </div>
-        </div>
-      </div>
-
-
-      <div style="position:absolute;width:100%;height:0.3%;background:#ffffff;bottom:0%;overflow:hidden;"></div>
-      <div class="glance" style="position:absolute;height:63%;color:#00000014;top: 22%;transform:rotateZ(90deg);font-family:font9;font-size:13vh;left: -42%;">WE ARE</div>
+        </a>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'pinia'
-import { useUserStore } from '../stores/store'
-import horizontalttl from './horizontalttl.vue'
+import horizontalttl from "./horizontalttl.vue";
 
 export default {
   components: { horizontalttl },
 
   data() {
     return {
-      shownQAID: false,
-      isReadQuestion: false,
-
       guests: [
-        {
-          id: 'mikusagi01',
-          name: 'mikusagi01',
-          role: 'GUEST',
-          insta: 'mikusagi01',
-          avatar: '/mikusagi01.png',
-        },
-        {
-          id: 'miraidol_official',
-          name: 'miraidol_official',
-          role: 'GUEST',
-          insta: 'miraidol_official',
-          avatar: '/miraidol_official.jpg',
-        },
-        {
-          id: 'humanwannabes',
-          name: 'humanwannabes',
-          role: 'GUEST',
-          insta: 'humanwannabes',
-          avatar: '/humanwannabes.jpg',
-        },
-        {
-          id: 'vvbv_anwei',
-          name: 'vvbv_anwei',
-          role: 'GUEST',
-          insta: 'vvbv_anwei',
-          avatar: '/vvbv_anwei.jpg',
-        },
-        {
-          id: 'huluwa_orzlaplace',
-          name: 'huluwa_orzlaplace',
-          role: 'GUEST',
-          insta: 'huluwa_orzlaplace',
-          avatar: '/huluwa_orzlaplace.jpg',
-        },
-        {
-          id: 'suyinsama',
-          name: 'suyinsama',
-          role: 'GUEST',
-          insta: 'suyinsama',
-          avatar: '/suyinsama.jpg',
-        },
+        { id: "mikusagi01", name: "mikusagi01", role: "GUEST", insta: "mikusagi01", avatar: "/mikusagi01.png" },
+        { id: "miraidol_official", name: "miraidol_official", role: "GUEST", insta: "miraidol_official", avatar: "/miraidol_official.jpg" },
+        { id: "humanwannabes", name: "humanwannabes", role: "GUEST", insta: "humanwannabes", avatar: "/humanwannabes.jpg" },
+        { id: "vvbv_anwei", name: "vvbv_anwei", role: "GUEST", insta: "vvbv_anwei", avatar: "/vvbv_anwei.jpg" },
+        { id: "huluwa_orzlaplace", name: "huluwa_orzlaplace", role: "GUEST", insta: "huluwa_orzlaplace", avatar: "/huluwa_orzlaplace.jpg" },
+        { id: "suyinsama", name: "suyinsama", role: "GUEST", insta: "suyinsama", avatar: "/suyinsama.jpg" },
       ],
-    }
+    };
   },
-
-  computed: {
-    ...mapState(useUserStore, ['stateDump']),
-    compileLastTurns() {},
-  },
-
-  methods: {
-    ...mapActions(useUserStore, ['sendchat', 'getUsername']),
-
-    getNameFontSize(name) {
-      const len = name.length
-      const size = 3.8 - len * 0.1
-      return Math.max(1.5, size) + 'vh'
-    }
-  },
-}
+};
 </script>
 
 <style>
-.bottomline {
-  animation-name: bottomline;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-iteration-count: 1;
-  animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
-  animation-fill-mode: forwards;
+.who-wrap{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
 }
 
-@keyframes bottomline {
-  0% {
-    opacity: 0;
-    bottom: 3%;
-  }
-  100% {
-    opacity: 1;
-    bottom: -2%;
-  }
+.who-panel{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-rows:
+    3%      /* handle */
+    15%     /* hero */
+    56%     /* grid */
+    4%;     /* bottom */
+
+  background-image: url("/白底_文字.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95%;
+
+  animation: whoIn .45s cubic-bezier(1, 0.02, 0.17, 1) forwards;
 }
 
-.whopanel {
-  animation-name: whopanel;
-  animation-delay: 0.8s;
-  animation-duration: 0.7s;
-  animation-iteration-count: 1;
-  animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
-  animation-fill-mode: forwards;
+@keyframes whoIn{
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes whopanel {
-  0% {
-    opacity: 0;
-    width: 90%;
-  }
-  100% {
-    opacity: 1;
+/* handle */
+.windowHandle{
+  grid-row: 1;
+  margin-top: 1vw;
+  left: 1.5vw;
+  position: relative;
+  z-index: 5;
+}
+.handleText{
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  color: #00000026;
+  font-family: font9;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* hero */
+.who-hero{
+  grid-row: 2;
+  position: relative;
+  box-sizing: border-box;
+  left: 30%;
+}
+.who-hero__bg{
+  position: absolute;
+  inset: clamp(10px, 1.6vw, 22px);
+  width: auto;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* grid */
+.who-grid{
+  grid-row: 3;
+  position: relative;
+  padding: 3vw;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 18px);
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.guest-card{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: clamp(10px, 1.4vw, 16px);
+  border-radius: 18px;
+  text-decoration: none;
+
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: transform .15s ease, box-shadow .15s ease;
+  color: rgba(0,0,0,0.8);
+}
+.guest-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+
+.guest-avatar{
+  width: clamp(48px, 5vw, 68px);
+  height: clamp(48px, 5vw, 68px);
+  border-radius: 999px;
+  overflow: hidden;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.guest-avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.guest-info{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.guest-name{
+  font-family: font5;
+  font-size: clamp(14px, 1.6vw, 18px);
+  letter-spacing: .06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.guest-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: font5;
+  font-size: 12px;
+  letter-spacing: .05em;
+  opacity: 0.85;
+}
+.guest-role{
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+}
+.guest-insta{
+  opacity: 0.9;
+}
+
+/* 1300 以下 */
+/* ===== WHO mobile fix（对你当前类名生效） ===== */
+@media (max-width: 1300px){
+
+  /* 1) 面板不要固定 height:100% + overflow hidden，否则内容被裁/出现大片空白 */
+  .who-wrap{ height: auto; }
+  .who-panel{
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-rows:
+    3%      /* handle */
+    15%     /* hero */
+    56%     /* grid */
+    4%;     /* bottom */
+
+    background-image: url("/白底_文字.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;   /* ✅ 铺满 */
+
+
+    animation: whoIn .45s cubic-bezier(1, 0.02, 0.17, 1) forwards;
+  }
+
+
+  /* 3) hero：别用 left:30%，移动端直接居中/撑满 */
+  .who-hero{
+    left: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+  .who-hero__title{
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* 4) grid：移动端单列 + 不要在 grid 内再 overflow（交给页面滚动） */
+  .who-grid{
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 14px !important;
+
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* 5) 卡片：行内布局，头像缩小，文字不溢出 */
+  .guest-card{
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 12px !important;
+    border-radius: 16px;
+
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .guest-avatar{
+    width: 52px !important;
+    height: 52px !important;
+    flex: 0 0 auto;
+  }
+
+  .guest-name{
+    font-size: 16px !important;
+  }
+
+  /* meta 换行更自然，避免挤到右侧 */
+  .guest-meta{
+    font-size: 12px !important;
+    gap: 6px !important;
+  }
+  .guest-insta{
+    word-break: break-word;
   }
 }
 
-.guest-link {
-  color: #2b6fff;
-  text-decoration: underline;
+/* 手机更窄再缩一点 */
+@media (max-width: 420px){
+  .who-hero__title{ width: 94vw; }
+  .guest-avatar{ width: 46px !important; height: 46px !important; }
+  .guest-name{ font-size: 15px !important; }
 }
 
-.guest-link:hover {
-  color: #1a4fd9;
-}
 </style>
