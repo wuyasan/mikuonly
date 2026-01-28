@@ -7,6 +7,9 @@
     <template v-if="!isMobile">
       <div class="refund-desktop-wrap">
         <div class="refund-panel frosted-panel">
+          <div class="title title--desktop" aria-hidden="true">
+            <img src="/REFUND%20POLICY.png" class="title__img" alt="" />
+          </div>
           <horizontalttl />
 
           <div class="refund-policy-text">
@@ -54,12 +57,10 @@
     <template v-else>
       <div class="title title--mobile">
         <img
-            src="/nc.png"
-            class="title__nc"
-            style="filter: contrast(300%) brightness(752%) invert(100%); opacity: 0.5;"
+            src="/REFUND%20POLICY.png"
+            class="title__img"
+            alt=""
         />
-        <div class="heading title__h1">TICKET<br />POLICY</div>
-        <div class="heading title__h2">MIKU ONLY 2026</div>
       </div>
 
       <div class="refund-mobile-card">
@@ -311,5 +312,46 @@ export default {
   .title--mobile .title__nc{ width: 240px; left: 20px; top: -34px; }
   .title--mobile .title__h1{ top: 26px; font-size: 36px; }
   .title--mobile .title__h2{ top: 108px; font-size: 14px; letter-spacing: 0.46em; }
+}
+
+/* ===== Title image (shared) ===== */
+.title__img{
+  position: absolute;
+  right: 0;
+  top: 1vw;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* ===== Desktop: 跟着当前 subpanel 容器走（不跟滚动走）===== */
+.title--desktop{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(62vw, 980px);
+  height: auto;
+  z-index: 50;          /* 确保压在面板之上 */
+  pointer-events: none;
+}
+
+/* ===== Mobile/Tablet: 固定在视口右上角（你原来那套逻辑）===== */
+@media (max-width: 1300px){
+  .title--mobile{
+    position: fixed !important;
+    top: 12px;
+    right: 14px;
+    width: min(70vw, 360px);
+    height: auto;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .title--mobile .title__img{
+    top: 1vw;
+    position: absolute;  /* mobile 下直接当块显示 */
+    width: 30vw;
+    height: auto;
+  }
 }
 </style>

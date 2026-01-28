@@ -515,6 +515,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   padding: 0;
   box-sizing: border-box;
+  padding-bottom: 14px;
 }
 .infopage--mobile .m-scroll > *{
   width: 100%;
@@ -626,8 +627,10 @@ export default {
     height: 60vh;
   }
   .infopage--mobile .m-shell{
-    top: 26vh;
-    height: 74vh;
+    top: 23vh;
+    bottom: 0;
+    height: auto;
+    min-height: 0; 
   }
   .infopage--mobile .fg img{
     object-position: 50% 18%;
@@ -650,8 +653,7 @@ export default {
   .infopage--mobile .m-panel{
     left: 10px;
     right: 10px;
-    top: 72px;
-    bottom: 10px;
+    padding-bottom: 14px;
   }
 }
 
