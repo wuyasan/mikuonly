@@ -7,12 +7,13 @@ import home from './home.vue'; // Adjust the path if necessary
 import infopage from './infopage.vue';
 import schedulepage from './schedulePage.vue';
 import conduct from './conduct.vue';
+import floorplan from '../components/floorPlan.vue';
 
 //const text = ref('# Hello Editor');
 
 export default {
   components: {
-    mainMenu, home, infopage, mainMenu2, schedulepage, conduct
+    mainMenu, home, infopage, mainMenu2, schedulepage, conduct, floorplan
   },
 
   data() {
@@ -128,6 +129,7 @@ export default {
     <infopage v-if='currentwindow=="info" ' />
     <schedulepage v-if='currentwindow=="schedule" ' />
     <conduct v-if='currentwindow=="conduct" ' />
+    <floorplan v-if='currentwindow=="floorplan" ' />
     <mainMenu v-if="false" />
     <mainMenu2/>
   </div>

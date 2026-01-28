@@ -109,10 +109,4 @@ export default {
   -webkit-overflow-scrolling: touch;
   touch-action: auto !important;
 }
-
-@media (max-width: 768px) and (orientation: portrait) {
-  .fg {
-    display: none !important;
-  }
-}
 </style>
