@@ -6,7 +6,13 @@
     <!-- ================= Desktop：保持原版布局 ================= -->
     <template v-if="!isMobile">
       <div class="conduct-child-stage">
+        <!-- ✅ Desktop 右上角固定标题 -->
+
+
         <div class="floorpanel1 frosted-panel conduct-child-panel">
+          <div class="title title--desktop" aria-hidden="true">
+            <img src="/AGE%20POLICY.png" class="title__img" alt="" />
+          </div>
           <horizontalttl />
 
           <div class="age-policy-text conduct-child-text">
@@ -96,16 +102,10 @@
 
         <div class="age-mobile-header title title--mobile">
           <img
-              src="/nc.png"
-              class="title__nc"
-              style="filter: contrast(300%) brightness(752%) invert(100%); opacity: 0.5;"
-          >
-          <div class="heading title__h1">
-            AGE<br>POLICY
-          </div>
-          <div class="heading title__h2">
-            MIKU ONLY 2026
-          </div>
+              src="/AGE%20POLICY.png"
+              class="title__img"
+              alt=""
+          />
         </div>
 
         <div class="age-mobile-section">
@@ -546,6 +546,46 @@ export default {
   background: rgba(255,255,255,0.9);
 }
 
+/* ===== Title image (shared) ===== */
+.title__img{
+  position: absolute;
+  right: 0;
+  top: 1vw;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* ===== Desktop: 跟着当前 subpanel 容器走（不跟滚动走）===== */
+.title--desktop{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(62vw, 980px);
+  height: auto;
+  z-index: 50;          /* 确保压在面板之上 */
+  pointer-events: none;
+}
+
+/* ===== Mobile/Tablet: 固定在视口右上角（你原来那套逻辑）===== */
+@media (max-width: 1300px){
+  .title--mobile{
+    position: fixed !important;
+    top: 12px;
+    right: 14px;
+    width: min(70vw, 360px);
+    height: auto;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .title--mobile .title__img{
+    top: 1vw;
+    position: absolute;  /* mobile 下直接当块显示 */
+    width: 30vw;
+    height: auto;
+  }
+}
 
 
 </style>

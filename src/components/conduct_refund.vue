@@ -3,53 +3,45 @@
       class="conduct_refund"
       :class="isMobile ? 'conduct_refund--mobile' : 'conduct_refund--desktop'"
   >
-    <!-- ================= Desktop：保持原版布局 ================= -->
+    <!-- ================= Desktop：自适应（跟 conduct_child 同逻辑） ================= -->
     <template v-if="!isMobile">
-      <div style="position: absolute;height: 90vh;width: 90vh;left: 90vh;top: 3vh;">
-
-        <div
-            class="floorpanel1 frosted-panel"
-            style="position: absolute;height: 72%;top: 13vh;
-               mix-blend-mode: screen;width: 70vh;left: 17%;overflow:auto;"
-        >
+      <div class="refund-desktop-wrap">
+        <div class="refund-panel frosted-panel">
+          <div class="title title--desktop" aria-hidden="true">
+            <img src="/REFUND%20POLICY.png" class="title__img" alt="" />
+          </div>
           <horizontalttl />
 
-          <div
-              class="refund-policy-text"
-              style="position:absolute;inset:0;
-                margin:2vh 3vh 4vh 3vh;
-                padding:3vh 4vh 6vh 4vh;
-                color:white;
-                font-size:1.6vh;line-height:2.5vh;"
-          >
-            <div style="font-family:font5;font-size:2vh;font-weight:900;margin-bottom:1vh;">
-              Ticket Policy
-            </div>
+          <div class="refund-policy-text">
+            <div class="ttl">Ticket Policy</div>
 
-            <ul style="margin:0 0 2vh 2.5vh;padding:0;">
-              <li style="margin-bottom:1vh;">
-                All ticket sales are final.
-              </li>
-              <li style="margin-bottom:1vh;">
+            <ul class="ul">
+              <li class="li">All ticket sales are final.</li>
+
+              <li class="li">
                 Once purchased, tickets are
-                <span style="font-weight:900;">non-refundable and non-transferable</span>
+                <span class="strong">non-refundable and non-transferable</span>
                 under any circumstances, including but not limited to scheduling
                 conflicts, illness, or personal emergencies.
               </li>
-              <li style="margin-bottom:1vh;">
+
+              <li class="li">
                 Please review all event details carefully (including date, location,
                 admission rules, and policies) before completing your purchase.
               </li>
-              <li style="margin-bottom:1vh;">
+
+              <li class="li">
                 In the unlikely event that the event is canceled by the Organizer,
                 further instructions regarding refunds or rescheduling will be
                 announced separately.
               </li>
-              <li style="margin-bottom:1vh;">
+
+              <li class="li">
                 By purchasing a ticket, you acknowledge that you have read,
                 understood, and agreed to this policy.
               </li>
-              <li>
+
+              <li class="li">
                 For any questions, please contact us via our official email info@ny-miku-only.com or
                 official social media channels.
               </li>
@@ -57,30 +49,24 @@
           </div>
         </div>
 
-        <div
-            class="bottomline"
-            style="position: absolute;width: 76.1vh;height: 0.1vh;
-               background: rgb(255 255 255);left: 16vh;"
-        ></div>
+        <div class="bottomline"></div>
       </div>
     </template>
 
-    <!-- ================= Mobile / Tablet：卡片版 ================= -->
+    <!-- ================= Mobile / Tablet：卡片版 + fixed title ================= -->
     <template v-else>
+      <div class="title title--mobile">
+        <img
+            src="/REFUND%20POLICY.png"
+            class="title__img"
+            alt=""
+        />
+      </div>
+
       <div class="refund-mobile-card">
-        <!-- ✅ 固定在整个页面右上角：滚动卡片也不动 -->
-        <div class="refund-mobile-header title title--mobile">
-          <img
-              src="/nc.png"
-              class="title__nc"
-              style="filter: contrast(300%) brightness(752%) invert(100%); opacity: 0.5;"
-          >
-          <div class="heading title__h1">
-            REFUND<br>POLICY
-          </div>
-          <div class="heading title__h2">
-            MIKU ONLY 2026
-          </div>
+        <div class="refund-mobile-header">
+          <div class="refund-mobile-title">TICKET POLICY</div>
+          <div class="refund-mobile-sub">MIKU ONLY NYC 2026</div>
         </div>
 
         <div class="refund-mobile-section">
@@ -114,51 +100,98 @@
 </template>
 
 <script>
-import horizontalttl from './horizontalttl.vue'
+import horizontalttl from "./horizontalttl.vue";
 
 export default {
   components: { horizontalttl },
-
   data() {
     return {
       isMobile: false,
       _onResize: null,
-    }
+    };
   },
-
   mounted() {
     this.updateIsMobile();
     this._onResize = () => this.updateIsMobile();
     window.addEventListener("resize", this._onResize, { passive: true });
   },
-
   beforeUnmount() {
     if (this._onResize) window.removeEventListener("resize", this._onResize);
   },
-
   methods: {
     updateIsMobile() {
-      // 和 conduct.vue / conduct_child 保持一致：1300px 以下走卡片版
       this.isMobile = window.matchMedia("(max-width: 1300px)").matches;
     },
   },
-}
+};
 </script>
 
 <style>
-/* ===== Desktop 原动画 ===== */
+/* ===== Desktop 自适应舞台（关键） ===== */
+.conduct_refund--desktop {
+  position: absolute;
+  inset: 0;
+}
+
+.refund-desktop-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.refund-panel {
+  position: absolute;
+  top: clamp(3vh, 4vh, 6vh);
+  left: clamp(2vh, 3vh, 4vh);
+  right: clamp(2vh, 3vh, 4vh);
+  bottom: clamp(8vh, 10vh, 12vh);
+
+  overflow: auto;
+  mix-blend-mode: screen;
+}
+
+.refund-policy-text {
+  position: absolute;
+  inset: 0;
+  margin: 2vh 3vh 4vh 3vh;
+  padding: 3vh 4vh 6vh 4vh;
+  color: white;
+  font-size: 1.6vh;
+  line-height: 2.5vh;
+}
+
+.refund-policy-text .ttl {
+  font-family: font5;
+  font-size: 2vh;
+  font-weight: 900;
+  margin-bottom: 1vh;
+}
+
+.refund-policy-text .strong {
+  font-weight: 900;
+}
+
+.refund-policy-text .ul {
+  margin: 0 0 2vh 2.5vh;
+  padding: 0;
+}
+
+.refund-policy-text .li {
+  margin-bottom: 1vh;
+}
+
 .bottomline {
-  animation-name: bottomline;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-iteration-count: 1;
-  animation-timing-function: cubic-bezier(1, 0.02, 0.17, 1);
-  animation-fill-mode: forwards;
+  position: absolute;
+  left: clamp(2vh, 3vh, 4vh);
+  right: clamp(2vh, 3vh, 4vh);
+  height: 0.1vh;
+  bottom: clamp(3vh, 4vh, 6vh);
+  background: rgb(255 255 255);
+  animation: bottomline 0.3s cubic-bezier(1, 0.02, 0.17, 1) forwards;
 }
 
 @keyframes bottomline {
-  0% { opacity: 0; bottom: 17%; }
-  100% { opacity: 1; bottom: 12%; }
+  0% { opacity: 0; transform: translateY(2vh); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .frosted-panel {
@@ -170,7 +203,7 @@ export default {
 }
 
 /* ===== Mobile / Tablet 卡片 ===== */
-.conduct_refund--mobile {
+.conduct_refund--mobile{
   position: relative;
   width: 100%;
   height: auto;
@@ -183,20 +216,37 @@ export default {
       "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-.refund-mobile-card {
+.refund-mobile-card{
   background: rgba(255,255,255,0.78);
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.16);
 }
 
-.refund-mobile-section {
+.refund-mobile-header{ margin-bottom: 12px; }
+
+.refund-mobile-title{
+  font-size: 15px;
+  letter-spacing: 0.20em;
+  font-weight: 800;
+  opacity: 0.82;
+  text-transform: uppercase;
+}
+
+.refund-mobile-sub{
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  opacity: 0.72;
+  margin-top: 5px;
+}
+
+.refund-mobile-section{
   margin-top: 12px;
   font-size: 15px;
   line-height: 1.65;
 }
 
-.refund-mobile-h {
+.refund-mobile-h{
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -205,50 +255,7 @@ export default {
   margin-bottom: 8px;
 }
 
-.refund-mobile-section ul {
-  margin: 6px 0 0 20px;
-  padding: 0;
-}
-
-.refund-mobile-section li {
-  margin-bottom: 8px;
-}
-
-/* ===== Phone（<=767px）：保持手机默认 ===== */
-@media (max-width: 767px) {
-  .refund-mobile-card {
-    padding: 15px 14px;
-    border-radius: 14px;
-  }
-}
-
-/* ===== Tablet（768~1300px）：再放大一档 ===== */
-@media (min-width: 768px) and (max-width: 1300px) {
-  .refund-mobile-card {
-    padding: 22px 22px;
-    border-radius: 20px;
-  }
-
-  .refund-mobile-section {
-    font-size: 17px;
-    line-height: 1.75;
-  }
-
-  .refund-mobile-h {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .refund-mobile-section ul {
-    margin-left: 24px;
-  }
-
-  .refund-mobile-section li {
-    margin-bottom: 10px;
-  }
-}
-
-/* ===== Mobile + Tablet：title 固定在整页右上角（m-scroll 滚动也不动）===== */
+/* ===== fixed title（同 conduct_child） ===== */
 @media (max-width: 1300px){
   .title--mobile{
     position: fixed !important;
@@ -266,7 +273,6 @@ export default {
     left: 18px;
     top: -26px;
     opacity: 0.5;
-    filter: contrast(300%) brightness(752%) invert(100%);
   }
 
   .title--mobile .title__h1{
@@ -296,7 +302,6 @@ export default {
   }
 }
 
-/* ===== iPad/Tablet：title 再放大一点 ===== */
 @media (min-width: 768px) and (max-width: 1300px){
   .title--mobile{
     top: 16px;
@@ -304,19 +309,49 @@ export default {
     width: 360px;
     height: 140px;
   }
-  .title--mobile .title__nc{
-    width: 240px;
-    left: 20px;
-    top: -34px;
+  .title--mobile .title__nc{ width: 240px; left: 20px; top: -34px; }
+  .title--mobile .title__h1{ top: 26px; font-size: 36px; }
+  .title--mobile .title__h2{ top: 108px; font-size: 14px; letter-spacing: 0.46em; }
+}
+
+/* ===== Title image (shared) ===== */
+.title__img{
+  position: absolute;
+  right: 0;
+  top: 1vw;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* ===== Desktop: 跟着当前 subpanel 容器走（不跟滚动走）===== */
+.title--desktop{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(62vw, 980px);
+  height: auto;
+  z-index: 50;          /* 确保压在面板之上 */
+  pointer-events: none;
+}
+
+/* ===== Mobile/Tablet: 固定在视口右上角（你原来那套逻辑）===== */
+@media (max-width: 1300px){
+  .title--mobile{
+    position: fixed !important;
+    top: 12px;
+    right: 14px;
+    width: min(70vw, 360px);
+    height: auto;
+    z-index: 9999;
+    pointer-events: none;
   }
-  .title--mobile .title__h1{
-    top: 26px;
-    font-size: 36px;
-  }
-  .title--mobile .title__h2{
-    top: 108px;
-    font-size: 14px;
-    letter-spacing: 0.46em;
+
+  .title--mobile .title__img{
+    top: 1vw;
+    position: absolute;  /* mobile 下直接当块显示 */
+    width: 30vw;
+    height: auto;
   }
 }
 </style>
