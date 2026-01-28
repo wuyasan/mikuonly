@@ -85,7 +85,7 @@
 
           <div class="img-row">
             <button class="img-btn img-btn--small" type="button" @click="setWindow('floorplan')">
-              <img :src="currentwindow === 'floorplan' ? '/public/FLOORPLAN_SLECTED.png' : '/public/FLOOR%20PLAN.png'" alt="FloorPlan" />
+              <img :src="currentwindow === 'floorplan' ? '/FLOORPLAN_SLECTED.png' : '/FLOOR%20PLAN.png'" alt="FloorPlan" />
             </button>
 
             <button class="img-btn img-btn--small" type="button" @click="openConductLink('prop')">
