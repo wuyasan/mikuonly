@@ -44,7 +44,7 @@
           </button>
 
           <div class="img-row">
-            <button class="img-btn img-btn--small" type="button" @click="setWindow('floorplan')">
+            <button class="img-btn img-btn--small" type="button" @click="setWindowMobile('floorplan')">
               <img src="/public/FLOOR%20PLAN.png" alt="Floor Plan" />
             </button>
 
