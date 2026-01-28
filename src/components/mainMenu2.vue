@@ -44,7 +44,7 @@
           </button>
 
           <div class="img-row">
-            <button class="img-btn img-btn--small" type="button" @click="openConductLinkMobile('general')">
+            <button class="img-btn img-btn--small" type="button" @click="setWindow('floorplan')">
               <img src="/public/FLOOR%20PLAN.png" alt="Floor Plan" />
             </button>
 
@@ -84,7 +84,7 @@
           </button>
 
           <div class="img-row">
-            <button class="img-btn img-btn--small" type="button" @click="openConductLink('general')">
+            <button class="img-btn img-btn--small" type="button" @click="setWindow('floorplan')">
               <img src="/public/FLOOR%20PLAN.png" alt="Floor Plan" />
             </button>
 
