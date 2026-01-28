@@ -100,12 +100,32 @@
     <!-- ✅ tabs + 同一套 when/where/who 模块 -->
     <div class="m-shell">
       <div class="m-tabs">
-        <button class="m-tab" :class="{ active: mTab === 'when' }" @click="switchSubpanel('when')">WHEN</button>
-        <button class="m-tab" :class="{ active: mTab === 'where' }" @click="switchSubpanel('where')">WHERE</button>
-        <button class="m-tab" :class="{ active: mTab === 'who' }" @click="switchSubpanel('who')">
-          WHO <span class="m-tab-sub">(GUESTS)</span>
+        <!-- WHEN -->
+        <button class="m-tab" :class="{ active: mTab === 'when' }" @click="switchSubpanel('when')">
+          <span class="m-tab-label">WHEN</span>
+          <span v-if="unexplored.when" class="m-gem-wrap" aria-hidden="true">
+    <gem class="m-gem-inner" />
+  </span>
         </button>
+
+        <!-- WHERE -->
+        <button class="m-tab" :class="{ active: mTab === 'where' }" @click="switchSubpanel('where')">
+          <span class="m-tab-label">WHERE</span>
+          <span v-if="unexplored.where" class="m-gem-wrap" aria-hidden="true">
+    <gem class="m-gem-inner" />
+  </span>
+        </button>
+
+        <!-- WHO -->
+        <button class="m-tab" :class="{ active: mTab === 'who' }" @click="switchSubpanel('who')">
+          <span class="m-tab-label">WHO <span class="m-tab-sub">(GUESTS)</span></span>
+          <span v-if="unexplored.who" class="m-gem-wrap" aria-hidden="true">
+    <gem class="m-gem-inner" />
+  </span>
+        </button>
+
       </div>
+
 
       <div class="m-panel frosted-panel_info">
         <div class="m-scroll">
@@ -411,6 +431,8 @@ export default {
 
 /* tabs */
 .infopage--mobile .m-tabs{
+  position: relative;     /* ✅ 新增：让 gem 以按钮为参照 */
+  overflow: visible;      /* ✅ 新增：防止 gem 被裁掉 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -445,8 +467,26 @@ export default {
   box-shadow: 0 12px 22px rgba(0,0,0,0.18);
 }
 
+/* label 层级 */
+.infopage--mobile .m-tab-label{
+  position: relative;
+  z-index: 1;
+}
+
+/* gem：默认大小 */
+.infopage--mobile .m-gem--mobile{
+  position: absolute;
+  top: -10px;          /* ✅ 贴右上角 */
+  right: -10px;        /* ✅ 贴右上角 */
+  pointer-events: none;
+  transform: scale(2.2);
+  transform-origin: center;
+  z-index: 3;
+}
+
+
 .infopage--mobile .m-tab-sub{
-  font-size: clamp(10px, 1.6vw, 12px);
+  font-size: 1.6vw;
   opacity: 0.9;
   letter-spacing: 0.06em;
 }
@@ -518,13 +558,17 @@ export default {
     left: 0;
     right: 0;
     top: 25vh;
-    height: 75vh;
+    bottom: 0;        /* ✅ 用 bottom 代替 height，适配各种屏 */
     z-index: 4;
+
+    display: flex;    /* ✅ tabs + panel 垂直排 */
+    flex-direction: column;
+    min-height: 0;    /* ✅ 允许内部滚动 */
   }
 
   /* tabs stick inside bottom area */
   .infopage--mobile .m-tabs{
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 6;
     padding-top: 10px;
@@ -532,13 +576,15 @@ export default {
 
   /* panel fills remaining space */
   .infopage--mobile .m-panel{
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    top: clamp(62px, 8vh, 86px); /* ✅ adapt to tab height */
-    bottom: 12px;
-    margin: 0;
+    position: relative;   /* ✅ 不再 absolute */
+    flex: 1 1 auto;       /* ✅ 吃掉剩余高度 */
+    min-height: 0;        /* ✅ 让内部滚动生效 */
+
+    margin: 0 12px 12px;
+    border-radius: 22px;
+    overflow: hidden;
   }
+
 }
 
 /* =========================
@@ -546,7 +592,7 @@ export default {
    ========================= */
 @media (min-width: 769px) and (max-width: 1300px){
   .infopage--mobile .fg{
-    height: 40vh;              /* ✅ iPad give more character */
+    height: 50vh;              /* ✅ iPad give more character */
   }
   .infopage--mobile .m-shell{
     top: 28vh;
@@ -609,24 +655,36 @@ export default {
   }
 }
 
-/* =========================
-   Ultra ultra narrow (<=360)
-   ========================= */
-@media (max-width: 360px){
-  .infopage--mobile .m-tabs{
-    gap: 8px;
-  }
-  .infopage--mobile .m-tab{
-    font-size: 15px;
-    padding: 9px 12px;
-    letter-spacing: 0.06em;
-  }
-  .infopage--mobile .m-tab-sub{
-    font-size: 10px;
-  }
-  .infopage--mobile .m-panel{
-    top: 70px;
-  }
+/* ===== Force gem visible on infopage mobile tabs ===== */
+.infopage--mobile .m-tab{
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.infopage--mobile .m-tabs{
+  overflow: visible !important;
+}
+
+.infopage--mobile .m-gem-wrap{
+  position: absolute !important;
+  top: -12px !important;
+  right: -12px !important;
+  width: 28px !important;     /* ✅ 给一个确定尺寸 */
+  height: 28px !important;
+  z-index: 999 !important;    /* ✅ 直接顶到最上 */
+  pointer-events: none !important;
+
+  display: grid !important;   /* ✅ 保证子元素有布局 */
+  place-items: center !important;
+}
+
+/* 不管 gem 内部怎么写，强制它占满容器 */
+.infopage--mobile .m-gem-wrap .m-gem-inner,
+.infopage--mobile .m-gem-wrap svg,
+.infopage--mobile .m-gem-wrap img{
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
 }
 
 </style>

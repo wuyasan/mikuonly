@@ -6,31 +6,6 @@
     <!-- ================= Desktop：保持原版布局 ================= -->
     <template v-if="!isMobile">
       <div style="position: absolute;height: 90vh;width: 90vh;left: 90vh;top: 3vh;">
-        <div class="title">
-          <img
-              src="/nc.png"
-              style="position: absolute;width: 42vh;top: -10vh;left: 19vh;
-                 filter: contrast(300%) brightness(752%) invert(100%);
-                 opacity: 0.5;"
-          >
-          <div
-              class="heading"
-              style="position: absolute;bottom: 90%;left: 55%;
-                 font-family: font5;font-size: 8vh;font-weight: 900;
-                 line-height: 6.2vh;text-align:left;color: #ffffff6b;"
-          >
-            REFUND<br>POLICY
-          </div>
-          <div
-              class="heading"
-              style="position: absolute;bottom: 85%;left: 55%;
-                 font-family: font5;font-size: 1.2vh;font-weight: 900;
-                 line-height: 6.2vh;text-align:left;color: #ffffff6b;
-                 letter-spacing: 1.3vh;width:100%;"
-          >
-            MIKU ONLY 2026
-          </div>
-        </div>
 
         <div
             class="floorpanel1 frosted-panel"
