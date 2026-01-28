@@ -5,27 +5,11 @@
   >
     <!-- ================= Desktop：保持原版布局 ================= -->
     <template v-if="!isMobile">
-      <div style="position: absolute;height: 90vh;width: 90vh;left: 90vh;top: 5vh;">
-        <div class="title">
-          <img src="/nc.png" style="position: absolute;width: 42vh;top: -10vh;left: 19vh;filter: contrast(300%) brightness(752%) invert(100%);opacity: 0.5;">
-          <div class="heading" style="position: absolute;bottom: 90%;left: 55%;font-family: font5;font-size: 8vh;font-weight: 900;line-height: 6.2vh;text-align:left;color: white;opacity:0.4;">
-            AGE<br>POLICY
-          </div>
-          <div class="heading" style="position: absolute;bottom: 85%;left: 55%;font-family: font5;font-size: 1.2vh;font-weight: 900;line-height: 6.2vh;text-align:left;color: white;letter-spacing: 1.3vh;width:100%;opacity:0.4;">
-            MIKU ONLY 2026
-          </div>
-        </div>
-
-        <div class="floorpanel1 frosted-panel"
-             style="position: absolute;height: 72%;top: 13vh;mix-blend-mode: screen;width:70vh;left: 17%;overflow:auto;">
+      <div class="conduct-child-stage">
+        <div class="floorpanel1 frosted-panel conduct-child-panel">
           <horizontalttl />
 
-          <div
-              class="age-policy-text"
-              style="position:absolute;inset:0;
-              margin:2vh 3vh 4vh 3vh;padding:3vh 4vh 6vh 4vh;
-              color:white;font-size:1.6vh;line-height:2.5vh;"
-          >
+          <div class="age-policy-text conduct-child-text">
             <div style="font-family:font5;font-size:2vh;font-weight:900;margin-bottom:1vh;">
               Admission Age Rules
             </div>
@@ -98,8 +82,7 @@
           </div>
         </div>
 
-        <div class="bottomline"
-             style="position: absolute;width: 76.1vh;height: 0.1vh;background: rgb(255 255 255);left: 16vh;"></div>
+        <div class="bottomline conduct-child-bottomline"></div>
       </div>
     </template>
 
@@ -513,6 +496,56 @@ export default {
     letter-spacing: 0.46em;
   }
 }
+
+/* ===== Desktop：像 infopage 子面板一样吃满外部舞台 ===== */
+.conduct_child--desktop{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 舞台内部布局容器 */
+.conduct-child-stage{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 主面板：自适应尺寸（留出一点标题/边距空间） */
+.conduct-child-panel{
+  position: absolute;
+  inset: 10% 6% 12% 6%;   /* 上 右 下 左：你可以微调 */
+  width: auto;
+  height: auto;
+
+  mix-blend-mode: screen;
+  overflow: auto;
+}
+
+/* 文本内边距：用相对单位，别用 vh 锁死 */
+.conduct-child-text{
+  position: absolute;
+  inset: 0;
+  margin: 2rem 2.2rem 2.8rem 2.2rem;
+  padding: 2.2rem 2.6rem 3.2rem 2.6rem;
+
+  color: white;
+  font-size: clamp(12px, 0.9vw, 16px);
+  line-height: 1.55;
+}
+
+/* 底线：贴着舞台底部走 */
+.conduct-child-bottomline{
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 6%;
+  height: 1px;
+  background: rgba(255,255,255,0.9);
+}
+
 
 
 </style>

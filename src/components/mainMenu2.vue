@@ -377,6 +377,7 @@ export default {
   transform: translateY(-28%);
   object-fit: contain;
   pointer-events: none;
+  opacity: 0.4;
 }
 
 .brand-lockup__logo{
