@@ -457,71 +457,111 @@ export default {
   /* =========================
    iPad / Tablet（769~1300）：铺满页面
    ========================= */
+  /* =========================
+     iPad / Tablet（769~1300）：正常排版 + 可向下滑动
+     ========================= */
   @media (min-width: 769px) and (max-width: 1300px){
+
     .when-wrap{
       width: 100%;
       height: 100%;
       margin: 0;
     }
 
+    /* ✅ 关键：不要用百分比行高，改成 auto + 滚动 */
     .when-panel{
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow-y: auto;            /* ✅ 向下滑动 */
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
 
-      /* 让上下结构更像桌面：上面时间板块大，下面票务 */
-      grid-template-rows:
-        6%
-        35%         /* time-board 自己按比例撑开 */
-        2%         /* ✅ divider 行高度 */
-        50%        /* ticket */
-        5%
-        2%;
-      row-gap: 14px;
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;  /* ✅ 自适应 */
+      row-gap: 18px;               /* ✅ 正常间距 */
 
-      /* ✅ 背景在 iPad 用 cover（铺满，不要像手机那样 contain 留空） */
+      padding: 18px 18px 26px;     /* ✅ 给内容呼吸空间 */
+      box-sizing: border-box;
+
       background-size: cover;
       background-position: center;
       background-image: url("/白底.png");
     }
 
-    .time-board{
-      width: 100%;
-      /* iPad 上让时间板块更“占屏”一点 */
-      max-height: 38vh;
-      margin: 3vw;
+    /* 顶部把手条别占 grid 压缩空间 */
+    .windowHandle-when{
+      margin-top: 0;
+      left: 0;
     }
 
+    /* ✅ 时间板：保持比例，但允许变高，不挤票区 */
+    .time-board{
+      position: relative;
+      height: auto;
+      align-content: end;
+      aspect-ratio: 2048 / 640;
+      min-height: 160px;           /* ✅ 防止太扁 */
+      max-height: 20vh;           /* ✅ 不要占满屏 */
+      margin: 0;
+    }
+
+    .time-board__bg {
+      position: absolute;
+      align-content: end;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20vh;
+      object-fit: contain;
+      object-position: right center;
+    }
+
+
+    /* ✅ 票区：正常流式布局，不再被 grid 压缩 */
     .ticket-area{
       position: relative;
+      padding-bottom: 10px;
+    }
+
+    .ticketing-box{
+      padding-top: 12px;
     }
 
     .ticketing-cards{
+      justify-content: center;
       gap: 18px;
+      flex-wrap: nowrap;          /* ✅ 平板宽度够，先不换行 */
     }
 
+    /* 三张卡在平板更大一点，但不会挤爆 */
     .ticketing-card{
-      width: min(22vw, 220px); /* iPad 上三张更大 */
+      width: min(22vw, 220px);
     }
 
-    /* ✅ Ticketing 横条放在三张卡下面，且不压住 */
+    /* ✅ banner 永远在下一行，不压票卡 */
     .ticketing-banner{
       position: relative;
       flex: 0 0 100%;
       width: 100%;
       display: flex;
       justify-content: flex-end;
-      margin-top: 10px;
-      right: auto;
-      bottom: auto;
+      margin-top: 12px;
+      padding-right: 10px;
     }
 
     .ticketing-banner__img{
-      position: relative;
-      width: 40vw;
+      width: min(40vw, 360px);
       height: auto;
     }
+
+    /* frame 如果盖住内容，给它 pointer-events none */
+    .ticketing-card__frame{
+      pointer-events: none;
+    }
   }
+
 
   /* =========================
      Phone（<=768）：保持你之前的窄卡片

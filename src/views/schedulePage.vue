@@ -170,7 +170,7 @@ export default {
 
     updateIsMobile() {
       // 你要更严格就改成 900/768
-      this.isMobile = window.matchMedia("(max-width: 1025px)").matches
+      this.isMobile = window.matchMedia("(max-width: 1300px)").matches
     },
   },
 
