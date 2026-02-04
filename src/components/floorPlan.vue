@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isMobile" class="m-shell">
+  <div v-if="isMobile" class="fp-mobile">
     <div class="fp2-bg" :style="{ backgroundImage: `url(${desktopAssets.pageBg})` }" aria-hidden="true"></div>
 
     <!-- panel -->
@@ -323,7 +323,7 @@ export default {
       const s = Math.min(w / baseW, h / baseH)
 
       // 你也可以限制最小缩放，避免太小（可调）
-      this.boardScale = Math.max(0.8, Math.min(1, s))
+      this.boardScale = Math.max(0.8, s)
     },
 
     // ✅ mobile 判断
@@ -702,14 +702,14 @@ export default {
   opacity: 0.75;
 }
 
-.m-shell{
+.fp-mobile{
   position:absolute;
   inset:0;
   padding: 12px;
   box-sizing: border-box;
 }
 
-.m-panel{
+.fp-mobile .m-panel{
   position:relative;
   height: calc(100vh - 70px);
   border-radius: 16px;
@@ -717,7 +717,7 @@ export default {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   overflow:hidden;
-  margin-top: 10px;
+  margin-top: 65px;
 }
 
 .m-scroll{
