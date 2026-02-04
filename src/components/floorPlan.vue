@@ -59,7 +59,7 @@
     />
 
     <!-- centered board -->
-    <div class="fp2-board">
+    <div class="fp2-board" :style="boardStyle">
       <!-- LEFT (has its own background image, no manual texts) -->
       <section class="fp2-left">
         <div class="fp2-leftInner">
@@ -82,15 +82,6 @@
           :style="{ backgroundImage: `url(${desktopAssets.rightPanelBg})` }"
           aria-hidden="true"
         ></div>
-
-        <!-- ✅ 右侧面板最顶部标题（固定） -->
-        <div class="fp2-rightTitle" aria-hidden="true">
-          <img
-            class="fp2-rightTitleImg"
-            :src="desktopAssets.floorPlanTitleImg"
-            alt=""
-          />
-        </div>
 
         <!-- amenities: each item is its own image -->
         <div class="fp2-amenList">
@@ -211,6 +202,7 @@ export default {
       // ✅ mobile
       isMobile: false,
       _onResize: null,
+      boardScale: 1,
 
       // 你原来的
       curfloor: 1,
@@ -280,6 +272,11 @@ export default {
   
   computed: {
     ...mapState(useUserStore, ['stateDump']),
+    boardStyle() {
+      return {
+        transform: `translate(-55%, -50%) scale(${this.boardScale})`,
+      }
+    },
   },
 
   methods: {
@@ -306,6 +303,27 @@ export default {
         this.curfloor -= 1
         this.unvisited['dnel'] = false
       }
+    },
+
+    updateBoardScale() {
+      // 只在小于 1920x1080 时缩小；否则 1
+      const w = window.innerWidth
+      const h = window.innerHeight
+
+      const baseW = 1920
+      const baseH = 1080
+
+      // >= 1920x1080 不缩放
+      if (!(w < baseW || h < baseH)) {
+        this.boardScale = 1
+        return
+      }
+
+      // 取宽高里更“紧”的比例（保证整体放得下）
+      const s = Math.min(w / baseW, h / baseH)
+
+      // 你也可以限制最小缩放，避免太小（可调）
+      this.boardScale = Math.max(0.8, Math.min(1, s))
     },
 
     // ✅ mobile 判断
@@ -340,7 +358,8 @@ export default {
 
   mounted() {
     this.updateIsMobile()
-    this._onResize = () => this.updateIsMobile()
+    this.updateBoardScale()
+    this._onResize = () => { this.updateIsMobile(); this.updateBoardScale() }
     window.addEventListener("resize", this._onResize, { passive: true })
   },
 
@@ -399,11 +418,14 @@ export default {
 
 /* board layout */
 .fp2-board{
-  position:relative;
+  position:absolute;
   z-index:1;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
   height: calc(100vh - 6vh);
   width: min(1360px, 92vw);
-  margin: 3vh auto;
+  margin: 0;
   box-sizing:border-box;
   display:grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -457,8 +479,8 @@ export default {
 }
 
 .fp2-planImg{
-  width:100%;
-  height:100%;
+  width: 90%;
+  height:90%;
   object-fit: contain;
 
   transform: rotate(-90deg)scale(0.9)translateX(3%);
@@ -480,25 +502,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   pointer-events:none;
-}
-
-/* ✅ 右侧背景板最顶上的 FLOOR PLAN 标题 */
-.fp2-rightTitle{
-  position: absolute;
-  top: 6%;          /* ✅ 往上/往下调这里 */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 56%;       /* ✅ 标题宽度，按你的素材调 */
-  z-index: 5;       /* ✅ 盖在 rightBg 上面 */
-  pointer-events: none;
-  line-height: 0;
-}
-
-.fp2-rightTitleImg{
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
 }
 
 /* amenities list positioned on the right bg */
@@ -530,13 +533,18 @@ export default {
 
 /* selectorTop 顶部两张标题图 */
 .fp2-selHeader{
+  position: absolute;
+  left: 50%;
+  top: -100px;                 /* ✅ 这里调：0~30px 看你想离上箭头多近 */
+  transform: translateX(-50%);
   width: 100%;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap: 15px;            /* 上下间距，小一点 */
-  margin-bottom: 6px;  /* 和箭头的距离 */
+  gap: 15px;
+  margin: 0;               /* ✅ 删掉 margin-bottom，避免漂 */
   line-height: 0;
+  pointer-events: none;
 }
 
 .fp2-selHeaderTop{
