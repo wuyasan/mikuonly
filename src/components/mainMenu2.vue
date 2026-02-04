@@ -39,6 +39,10 @@
             <img :src="currentwindow === 'schedule' ? '/SCHEDULE_ON.png' : '/SCHEDULE_OFF.png'" alt="Schedule" />
           </button>
 
+          <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('merchandise')">
+            <img :src="currentwindow === 'merchandise' ? '/merchandise_ON.png' : '/merchandise_OFF.png'" alt="Merchandise" />
+          </button>
+
           <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('conduct')">
             <img :src="currentwindow === 'conduct' ? '/Conduct_ON.png' : '/Conduct_OFF.png'" alt="Conduct" />
           </button>
@@ -77,6 +81,10 @@
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindow('schedule')">
             <img :src="currentwindow === 'schedule' ? '/SCHEDULE_ON.png' : '/SCHEDULE_OFF.png'" alt="Schedule" />
+          </button>
+
+          <button class="img-btn img-btn--wide" type="button" @click="setWindow('merchandise')">
+            <img :src="currentwindow === 'merchandise' ? '/merchandise_ON.png' : '/merchandise_OFF.png'" alt="Merchandise" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindow('conduct')">
@@ -170,16 +178,17 @@ export default {
    ========================= */
 .mobile-drawer,
 .desktop-menu {
-  --menu-w: clamp(280px, 22vw, 420px);
-  --pad-x: clamp(12px, 3.2vw, 20px);
-  --pad-top: clamp(14px, 2.8vw, 26px);
-  --gap: clamp(18px, 3.2vw, 38px);
-  --btn-wide-w: min(360px, calc(var(--menu-w) - (var(--pad-x) * 2)));
-  --row-w: var(--btn-wide-w);
-  --row-gap: clamp(10px, 2.2vw, 16px);
-  --logo-w: min(320px, calc(var(--menu-w) - (var(--pad-x) * 2)));
-}
+  --menu-w: clamp(260px, 18vw, 380px);      /* ✅ 菜单整体稍微窄一点 */
+  --pad-x: clamp(10px, 1.4vw, 16px);
+  --pad-top: clamp(10px, 1.6vw, 18px);
 
+  --gap: clamp(12px, 1.4vw, 22px);         /* ✅ 间距缩小 */
+  --btn-wide-w: min(300px, calc(var(--menu-w) - (var(--pad-x) * 2))); /* ✅ 宽按钮缩小 */
+
+  --row-w: var(--btn-wide-w);
+  --row-gap: clamp(8px, 1.0vw, 12px);      /* ✅ 小按钮间距缩小 */
+  --logo-w: min(260px, calc(var(--menu-w) - (var(--pad-x) * 2)));
+}
 /* =========================
    Shared buttons layout
    ========================= */
