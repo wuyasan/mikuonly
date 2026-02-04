@@ -8,12 +8,13 @@ import infopage from './infopage.vue';
 import schedulepage from './schedulePage.vue';
 import conduct from './conduct.vue';
 import floorplan from '../components/floorPlan.vue';
+import merchandise from '../components/merchandise.vue';
 
 //const text = ref('# Hello Editor');
 
 export default {
   components: {
-    mainMenu, home, infopage, mainMenu2, schedulepage, conduct, floorplan
+    mainMenu, home, infopage, mainMenu2, schedulepage, conduct, floorplan, merchandise
   },
 
   data() {
@@ -130,6 +131,7 @@ export default {
     <schedulepage v-if='currentwindow=="schedule" ' />
     <conduct v-if='currentwindow=="conduct" ' />
     <floorplan v-if='currentwindow=="floorplan" ' />
+    <merchandise v-if='currentwindow=="merchandise" ' />
     <mainMenu v-if="false" />
     <mainMenu2/>
   </div>
