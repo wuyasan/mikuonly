@@ -38,11 +38,26 @@
                   class="card"
                   type="button"
                   @click="open(item)"
-                  :aria-label="`Open ${item.name}`"
                 >
+                  <!-- 底图：卡片框（图二） -->
                   <img class="cardFrame" src="/商品卡片.png" alt="" aria-hidden="true" />
-                  <!-- sample 以后启用 -->
-                  <!-- <img class="sample" :src="item.img" alt="" /> -->
+
+                  <!-- 商品图：放进灰色窗口（图一） -->
+                  <!-- ✅ 新增：灰窗“遮挡层 + 裁切层” -->
+                  <div class="cardWindow" aria-hidden="true">
+                    <img
+                      class="cardArt"
+                      :class="item.fit === 'contain' ? 'fit-contain' : 'fit-cover'"
+                      :src="item.img"
+                      :alt="item.name"
+                    />
+                  </div>
+
+                  <!-- 文字（如果你想显示 ZHE SHI MING ZI） -->
+                  <div class="cardMeta">
+                    <div class="cardName">{{ item.name }}</div>
+                    <div class="cardPrice">{{ item.price }}</div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -55,11 +70,11 @@
     </div>
 
     <!-- =========================
-         Mobile（全新独立，不进 stage，不影响桌面）
-         一屏一张卡：左右滑动切换
-         ========================= -->
+        Mobile（全新独立，不进 stage，不影响桌面）
+        一屏一张卡：左右滑动切换
+        ========================= -->
     <div v-else class="m-shell" aria-label="Merchandise mobile">
-      <!-- 手机端标题（你说可以重写，不要沿用桌面定位） -->
+      <!-- 手机端标题 -->
       <img class="m-title" src="/Merchandise tittle.png" alt="Merchandise" />
 
       <!-- 手机端卡片轮播 -->
@@ -73,7 +88,24 @@
             @click="open(item)"
             :aria-label="`Open ${item.name}`"
           >
+            <!-- 卡片框底图 -->
             <img class="m-cardFrame" src="/商品卡片.png" alt="" aria-hidden="true" />
+
+            <!-- ✅ 灰色窗口 + 商品图（手机端专用） -->
+            <div class="m-cardWindow" aria-hidden="true">
+              <img
+                class="m-cardArt"
+                :class="item.fit === 'contain' ? 'fit-contain' : 'fit-cover'"
+                :src="item.img"
+                :alt="item.name"
+              />
+            </div>
+
+            <!-- ✅ 文字层（名字白底只包住名字） -->
+            <div class="m-cardMeta" aria-hidden="true">
+              <div class="m-cardName">{{ item.name }}</div>
+              <div class="m-cardPrice">{{ item.price }}</div>
+            </div>
           </button>
         </div>
 
@@ -81,7 +113,6 @@
         <img class="m-frontMask" src="/最前边缘滤网遮罩.png" alt="" aria-hidden="true" />
       </div>
 
-      <!-- 可选提示（不想要就删） -->
       <div class="m-hint" aria-hidden="true">Swipe ◀ ▶</div>
     </div>
   </div>
@@ -103,12 +134,82 @@ export default {
       _onResize: null,
 
       items: [
-        { id: "p1", name: "ZHE SHI MING ZI", price: 99.99, img: "/sample.png", link: "" },
-        { id: "p2", name: "ZHE SHI MING ZI", price: 99.99, img: "/sample.png", link: "" },
-        { id: "p3", name: "ZHE SHI MING ZI", price: 99.99, img: "/sample.png", link: "" },
-        { id: "p4", name: "ZHE SHI MING ZI", price: 99.99, img: "/sample.png", link: "" },
-        { id: "p5", name: "ZHE SHI MING ZI", price: 99.99, img: "/sample.png", link: "" },
-        { id: "p6", name: "ZHE SHI MING ZI", price: 99.99, img: "/sample.png", link: "" },
+        { id: "p1", name: "piapro - Hatsune Miku Nika◯ Keychain", price: "Only for pick up", img: "/piapro - Hatsune Miku Nika◯-keychain.png", link: "" },
+        { id: "p2", name: "piapro - Hatsune Miku DAY Keychain", price: "Only for pick up", img: "/piapro - Hatsune Miku DAY-keychain.png", link: "" },
+        { id: "p3", name: " piapro - Hatsune Miku Jagabata Keychain", price: "Only for pick up", img: "/piapro - Hatsune Miku Jagabata-keychain.png", link: "" },
+        { id: "p4", name: "piapro - Hatsune Miku Usajimaru Keychain", price: "Only for pick up", img: "/piapro - Hatsune Miku Usajimaru-keychain.png", link: "" },
+        { id: "p5", name: "piapro - Hatsune Miku Pentagon Keychain", price: "Only for pick up", img: "/piapro - Hatsune Miku Pentagon-keychain.png", link: "" },
+        { id: "p6", name: "piapro - Hatsune Miku Nika◯ Acrylic Stand", price: "Only for pick up", img: "/piapro - Hatsune Miku Nika◯-AcrylicStand.png", link: "" },
+        { id: "p7", name: "piapro - Hatsune Miku DAY Acrylic Stand", price: "Only for pick up", img: "/piapro - Hatsune Miku DAY-AcrylicStand.png", link: "" },
+        { id: "p8", name: "piapro - Hatsune Miku Jagabata Acrylic Stand", price: "Only for pick up", img: "/piapro - Hatsune Miku Jagabata-AcrylicStand.png", link: "" },
+        { id: "p9", name: "piapro - Hatsune Miku Usajimaru Acrylic Stand", price: "Only for pick up", img: "/piapro - Hatsune Miku Usajimaru-AcrylicStand.png", link: "" },
+        { id: "p10", name: "piapro - Hatsune Miku Pentagon Acrylic Stand", price: "Only for pick up", img: "/piapro - Hatsune Miku Pentagon-AcrylicStand.png", link: "" },
+        {
+          id: "p11",
+          name: "１Pac Nika◯ / DAY / Jagabata / Usajimaru / Pentagon",
+          price: "Only for pick up",
+          img: "/1Pac Can Badge.png",
+          fit: "contain",
+        },
+        {
+          id: "p12",
+          name: "5PCS Can Badge piapro - Hatsune Miku …",
+          price: "Only for pick up",
+          img: "/Can Badge 5PCS Set A.png",
+          fit: "contain",
+        },
+        {
+          id: "p13",
+          name: "5PCS Can Badge piapro - Hatsune Miku …",
+          price: "Only for pick up",
+          img: "/Can Badge 5PCS Set B.png",
+          fit: "contain",
+        },
+        {
+          id: "p14",
+          name: "5PCS Can Badge piapro - Hatsune Miku …",
+          price: "Only for pick up",
+          img: "/Can Badge 5PCS Set C.png",
+          fit: "contain",
+        },
+        { id: "p15", name: "piapro - Hatsune Miku Nika◯ / M / L / XL / 2XL", price: "Only for pick up", img: "/piapro - Hatsune Miku Nika◯-Tshirt.png", link: "" },
+        { id: "p18", name: " piapro - Hatsune Miku Usajimaru / M / L / XL / 2XL", price: "Only for pick up", img: "/piapro - Hatsune Miku Usajimaru-Tshirt.png", link: "" },
+        { id: "p19", name: " piapro - Hatsune Miku Pentagon / M / L / XL / 2XL", price: "Only for pick up", img: "/piapro - Hatsune Miku Pentagon-Tshirt.png", link: "" },
+        {
+          id: "p20",
+          name: "piapro - Hatsune Miku Nika◯ Tote Bag",
+          price: "Only for pick up",
+          img: "/piapro - Hatsune Miku Nika◯-ToteBag.jpg",
+          fit: "contain",
+        },
+        {
+          id: "p21",
+          name: "piapro - Hatsune Miku DAY Tote Bag",
+          price: "Only for pick up",
+          img: "/piapro - Hatsune Miku DAY-ToteBag.jpg",
+          fit: "contain",
+        },
+        {
+          id: "p22",
+          name: "piapro - Hatsune Miku Jagabata Tote Bag",
+          price: "Only for pick up",
+          img: "/piapro - Hatsune Miku Jagabata-ToteBag.jpg",
+          fit: "contain",
+        },
+        {
+          id: "p23",
+          name: "piapro - Hatsune Miku Usajimaru Tote Bag",
+          price: "Only for pick up",
+          img: "/piapro - Hatsune Miku Usajimaru-ToteBag.jpg",
+          fit: "contain",
+        },
+        {
+          id: "p24",
+          name: "piapro - Hatsune Miku Pentagon Tote Bag",
+          price: "Only for pick up",
+          img: "/piapro - Hatsune Miku Pentagon-ToteBag.jpg",
+          fit: "contain",
+        },
       ],
 
       // 桌面端拖拽滚动状态（保留你现有逻辑）
@@ -244,6 +345,16 @@ export default {
   opacity: 1;
 }
 
+.fit-cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.fit-contain {
+  object-fit: contain;
+  object-position: center;
+}
+
 /* =========================
    Desktop（你现有 CSS：原样保留）
    ========================= */
@@ -364,15 +475,72 @@ export default {
   flex: 0 0 auto;
 }
 
-.cardFrame {
+.cardFrame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  pointer-events:none;
+  -webkit-user-drag:none;
+  user-drag:none;
+}
+
+/* ✅ 灰色窗口：负责“盖掉底图占位 + 裁切” */
+.cardWindow{
   position: absolute;
-  inset: 0;
+  left: 0%;
+  top: 2.7%;
+  width: 100%;
+  height: 84%;
+
+  background: #bfbfbf;
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ✅ 商品图：铺满灰色框（cover），多余裁掉 */
+.cardArt{
+  position: absolute;
+  inset: 0;              /* ✅ 关键：占满窗口 */
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  -webkit-user-drag: none;
-  user-drag: none;
+
+  object-position: center; /* ✅ 默认居中 */
+
+  /* 让边缘更干净（可选） */
+  transform: scale(1.02);
+}
+
+/* ✅ 文字层（如果卡片底图本身已经画了文字区，也可以用这种叠上去） */
+.cardMeta{
+  position:absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 7%;
+
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+
+  text-align:left;
+  pointer-events:none;
+}
+
+.cardName{
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: .02em;
+  
+  background: rgba(255,255,255,0.9);
+  border-radius: 6px;
+}
+
+.cardPrice{
+  font-weight: 800;
+  font-size: 14px;
+  opacity: .8;
 }
 
 .frontMask {
@@ -387,7 +555,7 @@ export default {
 }
 
 /* =========================
-   Mobile（全新独立：m- 前缀，避免影响别的页面）
+   Mobile（独立：m- 前缀）
    ========================= */
 .m-shell {
   position: absolute;
@@ -422,23 +590,21 @@ export default {
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 
-  /* ✅ 一张一张吸附 */
+  /* 一张一张吸附 */
   scroll-snap-type: x mandatory;
 
-  /* ✅ 两边留点 padding，让第一张不会贴边 */
   padding: 0 10px;
   box-sizing: border-box;
 
-  /* 隐藏滚动条（更像轮播） */
   scrollbar-width: none;
 }
-.m-rail::-webkit-scrollbar {
-  display: none;
-}
+.m-rail::-webkit-scrollbar { display: none; }
 
 .m-card {
+  position: relative;      /* ✅ 关键：给内部绝对定位用 */
   flex: 0 0 100%;
   scroll-snap-align: center;
+
   display: grid;
   place-items: center;
 
@@ -457,6 +623,64 @@ export default {
   user-drag: none;
 }
 
+/* ✅ 手机端灰色窗口（位置/大小你可以再微调） */
+.m-cardWindow{
+  position: absolute;
+
+  /* 这组数值大致对应桌面端的那块“灰窗”，
+     如果你的手机卡片比例不同，就微调这四个 */
+  left: 50%;
+  top: 45.5%;
+  width: 89%;
+  height:71%;
+
+  transform: translate(-50%, -50%);
+  background: #bfbfbf;
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ✅ 手机端商品图：完整显示（不裁切） */
+.m-cardArt{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ✅ 手机端文字区 */
+.m-cardMeta{
+  position: absolute;
+  left: 50%;
+  bottom: 12.5%;
+  transform: translateX(-50%);
+  width: 78%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  pointer-events: none;
+}
+
+/* ✅ 名字：灰字 + 名字下面白底（只包名字） */
+.m-cardName{
+  display: inline-block;          /* 白底只包住字 */
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 6px;
+
+  color: #7a7a7a;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* 价格：保持普通，无白底 */
+.m-cardPrice{
+  font-weight: 800;
+  font-size: 25px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
 .m-frontMask {
   position: absolute;
   left: 0;
@@ -473,6 +697,7 @@ export default {
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
+
 
 /* 小屏兜底 */
 @media (max-width: 1300px) {
