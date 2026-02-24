@@ -74,6 +74,31 @@
           style="position:absolute;height:100%;left:4.5%;z-index:3; opacity: 0.6"
       />
     </div>
+
+    <!-- ✅ Maid Cafe 独立浮动按钮（不跟立绘绑在一起） -->
+    <a
+      class="maid-fab maid-fab--desktop"
+      href="https://www.ny-miku-only.com/book-online"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Reserve Maid Cafe"
+    >
+      <img class="maid-fab__icon" src="/maidcafe.jpg" alt="" aria-hidden="true" />
+
+      <svg class="maid-fab__ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <path
+            id="maidTextPath"
+            d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"
+          />
+        </defs>
+        <text>
+          <textPath href="#maidTextPath" startOffset="50%" text-anchor="middle">
+            RESERVE MAID CAFE • RESERVE MAID CAFE •
+          </textPath>
+        </text>
+      </svg>
+    </a>
   </div>
 
   <!-- Mobile template -->
@@ -96,6 +121,29 @@
       <!-- ✅ /public 改成 / -->
       <img src="/mikuonly2026.png" />
     </div>
+
+    <!-- ✅ Maid Cafe 独立浮动按钮（不跟立绘绑在一起） -->
+    <a
+      class="maid-fab maid-fab--mobile"
+      href="https://www.ny-miku-only.com/book-online"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Reserve Maid Cafe"
+    >
+      <img class="maid-fab__icon" src="/maidcafe.jpg" alt="" aria-hidden="true" />
+
+      <svg class="maid-fab__ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <path id="maidTextPathM"
+                d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
+        </defs>
+        <text>
+          <textPath href="#maidTextPathM" startOffset="50%" text-anchor="middle">
+            RESERVE MAID CAFE • RESERVE MAID CAFE •
+          </textPath>
+        </text>
+      </svg>
+    </a>
 
     <!-- ✅ tabs + 同一套 when/where/who 模块 -->
     <div class="m-shell">
@@ -341,6 +389,61 @@ export default {
   pointer-events: none;
 }
 
+/* ===== Maid Cafe FAB (Desktop, independent) ===== */
+.infopage--desktop .maid-fab--desktop{
+  position: fixed;        /* ✅ 跟立绘彻底无关 */
+  z-index: 9999;
+
+  /* ✅ 默认放右下角（你想放右侧中间也可以改） */
+  right: 49.5vw;
+  top: 31.5%;
+
+  width: clamp(72px, 6.2vw, 110px);
+  height: clamp(72px, 6.2vw, 110px);
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22));
+  transform: translateY(-50%);
+}
+
+.infopage--desktop .maid-fab__icon{
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  display: block;
+  border-radius: 999px;
+}
+
+/* 环绕文字 */
+.infopage--desktop .maid-fab__ring{
+  position: absolute;
+  inset: -18%;
+  width: 136%;
+  height: 136%;
+  pointer-events: none;
+}
+
+.infopage--desktop .maid-fab__ring text{
+  font-family: font5, "Avenir Next", Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  fill: rgba(255,255,255,0.92);
+  text-transform: uppercase;
+}
+
+/* hover */
+@media (hover:hover){
+  .infopage--desktop .maid-fab--desktop:hover{
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
 /* ✅ Make contentpanel a stable full-screen stage */
 .infopage--desktop .contentpanel{
   position: absolute !important;
@@ -538,6 +641,52 @@ export default {
     width: 100%;
     height: 100vh;
     z-index: 3;
+  }
+
+  /* ===== Maid Cafe FAB (Mobile) ===== */
+  .infopage--mobile .maid-fab--mobile{
+    position: fixed;
+    z-index: 9999;
+
+    /* ✅ 右上角偏下：这两个值你随时微调 */
+    right: 16px;
+    top: 120px;
+
+    width: clamp(60px, 16vw, 88px);
+    height: clamp(60px, 16vw, 88px);
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22));
+  }
+
+  .infopage--mobile .maid-fab--mobile .maid-fab__icon{
+    width: 88%;
+    height: 88%;
+    object-fit: cover;
+    display: block;
+    border-radius: 999px;
+  }
+
+  .infopage--mobile .maid-fab--mobile .maid-fab__ring{
+    position: absolute;
+    inset: -18%;
+    width: 136%;
+    height: 136%;
+    pointer-events: none;
+  }
+
+  .infopage--mobile .maid-fab--mobile .maid-fab__ring text{
+    font-family: font5, "Avenir Next", Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    fill: rgba(255,255,255,0.92);
+    text-transform: uppercase;
   }
 
   /* ✅ character image: cover so it won't look "cut wrong" */

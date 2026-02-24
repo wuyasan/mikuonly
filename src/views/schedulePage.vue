@@ -184,11 +184,251 @@ export default {
       slots: [
         {
           id: "s1",
-          name: "Coming Soon",
-          time: "...",
-          title: "Coming Soon",
-          desc: "Stay tuned for the schedule announcement!",
+          name: "Miku Themed Music Band",
+          time: "12:00-12:20",
+          title: "Miku Themed Music Band",
+          desc: "List:\n World is Mine\n Kokoronashi\n 猛独が襲う\n 六兆年と一夜物語 \n アスノヨゾラ哨戒班",
           detailImg: "/赛车miku.jpg",
+        },
+        {
+          id: "s2",
+          name: "Opening Ceremony",
+          time: "12:20-12:30",
+          title: "Opening Ceremony",
+          desc: "Welcome to the opening ceremony of our event! We are thrilled to have you here as we kick off an exciting day filled with music, performances, and unforgettable moments. Get ready to be amazed and inspired as we set the stage for an incredible experience. Let the festivities begin!",
+          detailImg: "/mikuonly2026.png",
+        },
+        {
+          id: "s3",
+          name: "Miraidol",
+          time: "12:30-12:45",
+          title: "Miraidol",
+          desc: "Song List: \n 1.Magnet \n 2.Patchwork Staccato \n 3.CandyCookieChocolate \n 4.Monitoring",
+          detailImg: "/miraidol_official.jpg",
+        },
+        {
+          id: "s4",
+          name: "Game: Kahoot Challenge - Vocaloid",
+          time: "12:45-13:10",
+          title: "Game: Kahoot Challenge - Vocaloid",
+          desc: "Join us for an exciting Kahoot challenge featuring your favorite Vocaloid songs! Test your knowledge and compete with other fans for the top spot. Get ready for a fun and interactive experience!",
+          detailImg: "/kahoot_vocaloid.jpg",
+        },
+        {
+          id: "s5",
+          name: "Third Prize Draw：Button Badge*9",
+          time: "13:10-13:20",
+          title: "Third Prize Draw：Button Badge*9",
+          desc: "Congratulations to our third prize winners! Each winner will receive a set of 9 exclusive button badges featuring our beloved characters. Thank you to everyone who participated in the draw, and stay tuned for more exciting prizes in the future!",
+          detailImg: "/现场抽奖三等奖.JPG",
+        },
+        {
+          id: "s6",
+          name: "VVBV",
+          time: "13:25-13:40",
+          title: "VVBV",
+          desc: "Song List:\n 1.Magical Cure Love Shot\n 2.六兆年と一夜物語\n 3.Monitoring\n 4.Secret Performance\n 5.39music\n 6.Hand in Hand",
+          detailImg: "/vvbv_anwei.jpg",
+        },
+        {
+          id: "s7",
+          name: "i:RεS",
+          time: "13:40-13:55",
+          title: "i:RεS",
+          desc: "Song List:\n 1.Empurple\n 2.ロミオとシンデレラ\n 3.Secret Performance\n 4.気まぐれメルシィ",
+          detailImg: "...",
+        },
+        {
+          id: "s8",
+          name: "Yume Showtime☆! ",
+          time: "13:55-14:15",
+          title: "Yume Showtime☆! ",
+          desc: "...",
+          detailImg: "...",
+        },
+        {
+          id: "s9",
+          name: "Vocaloid Themed Music Band",
+          time: "14:15-15:00",
+          title: "Human Wannabes",
+          desc: "Song List:\n 1.Lost One no Goukoku\n 2.Kyoufuu All Back\n 3.Normal Discord\n 4.Unknown Mother Goose\n 5.アスノヨゾラ哨戒班\n 6.Blusher \n 7.Meltdown \n 8.Roki \n 9.Jigoku",
+          detailImg: "...",
+        },
+        {
+          id: "s10",
+          name: "Second Prize Draw：Fufu Plush ×3",
+          time: "15:00-15:10",
+          title: "Second Prize Draw：Fufu Plush ×3",
+          desc: "Congratulations to our second prize winners! Each winner will receive a Fufu Plush. Thank you to everyone who participated in the draw, and stay tuned for more exciting prizes in the future!",
+          detailImg: "现场抽奖二等奖fufu2.JPG",
+        },
+        {
+          id: "s11",
+          name: "Guess the Song Challenge",
+          time: "15:10-15:25",
+          title: "Guess the Song Challenge",
+          desc: "Test your knowledge of Vocaloid songs in our exciting Guess the Song Challenge! Compete with other fans and see who can identify the most songs correctly. Get ready for a fun and interactive experience!",
+          detailImg: "...",
+        },
+        {
+          id: "s12",
+          name: "Mesmerizing Triple Threat",
+          time: "15:35-15:40",
+          title: "Mesmerizing Triple Threat",
+          desc: "Performing By Cosmic Tide",
+          detailImg: "...",
+        },
+        {
+          id: "s13",
+          name: "Telepop",
+          time: "15:40-15:45",
+          title: "Telepop",
+          desc: "Performing By Eby亦白",
+          detailImg: "...",
+        },
+        {
+          id: "s14",
+          name: "Ai Dee!",
+          time: "15:45-15:50",
+          title: "Ai Dee!",
+          desc: "Performing By Sweet Eyes Cosplay",
+          detailImg: "...",
+        },
+        {
+          id: "s15",
+          name: "Gimme X Gimme",
+          time: "15:50-15:55",
+          title: "Gimme X Gimme",
+          desc: "Performing By Ad Astra",
+          detailImg: "...",
+        },
+        {
+          id: "s16",
+          name: "Vampire - MORE MORE JUMP!",
+          time: "15:55-16:00",
+          title: "Vampire - MORE MORE JUMP!",
+          desc: "Performing By Parfait Soleil",
+          detailImg: "...",
+        },
+        {
+          id: "s17",
+          name: "Happy Synthesizer",
+          time: "16:00-16:05",
+          title: "Happy Synthesizer",
+          desc: "Performing By C.ma.moves",
+          detailImg: "...",
+        },
+        {
+          id: "s18",
+          name: "Love Avoidance",
+          time: "16:05-16:10",
+          title: "Love Avoidance",
+          desc: "Performing By Karen Chen",
+          detailImg: "...",
+        },
+        {
+          id: "s19",
+          name: "CUPID’s Loving Tragedy",
+          time: "16:10-16:15",
+          title: "CUPID’s Loving Tragedy",
+          desc: "Performing By CUPID",
+          detailImg: "...",
+        },
+        {
+          id: "s20",
+          name: "Unknown Mother Goose",
+          time: "16:20-16:25",
+          title: "Unknown Mother Goose",
+          desc: "Performing By Kikako",
+          detailImg: "...",
+        },
+        {
+          id: "s21",
+          name: "Mikustic!",
+          time: "16:25-16:30",
+          title: "Mikustic!",
+          desc: "Performing By MonochroMenace x Pomegranola",
+          detailImg: "...",
+        },
+        {
+          id: "s22",
+          name: "Fire*Flower Re:ReRec",
+          time: "16:35-16:40",
+          title: "Fire*Flower Re:ReRec",
+          desc: "Performing By Mi•Do•Ri",
+          detailImg: "...",
+        },
+        {
+          id: "s23",
+          name: "Romeo and Cinderlla",
+          time: "16:40-16:45",
+          title: "Romeo and Cinderlla",
+          desc: "Performing By Tapikyoka",
+          detailImg: "...",
+        },
+        {
+          id: "s24",
+          name: "Drag Queen Hatsune Miku is Canon",
+          time: "16:45-16:50",
+          title: "Drag Queen Hatsune Miku is Canon",
+          desc: "Performing By Boxa Crayonz",
+          detailImg: "...",
+        },
+        {
+          id: "s25",
+          name: "Ifuudoudou by Vivid BAD SQUAD",
+          time: "16:50-16:54",
+          title: "Ifuudoudou by Vivid BAD SQUAD",
+          desc: "Performing By ANG3LZ",
+          detailImg: "...",
+        },
+        {
+          id: "s26",
+          name: "The Snow White Princess is... - MORE MORE JUMP!",
+          time: "16:54-16:58",
+          title: "The Snow White Princess is... - MORE MORE JUMP!",
+          desc: "Performing By CloverCure",
+          detailImg: "...",
+        },
+        {
+          id: "s27",
+          name: "Kira Kira ☆ Comet",
+          time: "16:58-17:02",
+          title: "Kira Kira ☆ Comet",
+          desc: "Performing By Kira Kira ☆ Comet",
+          detailImg: "...",
+        },
+        {
+          id: "s28",
+          name: "First Prize Draw: “MUSE” Figure ×1",
+          time: "17:05-17:15",
+          title: "First Prize Draw: “MUSE” Figure ×1",
+          desc: "Congratulations to our first prize winner! The winner will receive an exclusive “MUSE” figure. Thank you to everyone who participated in the draw, and stay tuned for more exciting prizes in the future!",
+          detailImg: "现场抽奖一等奖.png",
+        },
+        {
+          id: "s29",
+          name: "Photo Ops",
+          time: "17:15-17:20",
+          title: "Photo Ops",
+          desc: "Take memorable photos with your favorite characters and scenes from the event. Capture the moments and share your experience with friends!",
+          detailImg: "...",
+        },
+        {
+          id: "s30",
+          name: "Random Dance Chanllenge",
+          time: "17:25-17:55",
+          title: "Random Dance Chanllenge",
+          desc: "Join the fun and show off your dance moves in our Random Dance Challenge! Compete with other participants and enjoy the lively atmosphere.",
+          detailImg: "...",
+        },
+        {
+          id: "s31",
+          name: "Ending Ceremony",
+          time: "17:58-18:05",
+          title: "Ending Ceremony",
+          desc: "Join us for the grand finale as we wrap up the event with a memorable ending ceremony. Celebrate the highlights and enjoy the final moments with fellow attendees.",
+          detailImg: "...",
         },
         // ...你继续加
       ],
@@ -416,14 +656,17 @@ export default {
   font-family: font5;
   font-weight: 900;
   letter-spacing: 0.02em;
+  text-align: left;
   font-size: 36px;
   opacity: 0.65;
 }
 .timeslot-time{
   font-family: font5;
   font-weight: 900;
-  font-size: 40px;
+  text-align: left;
+  font-size: 36px;
   opacity: 0.65;
+  white-space: nowrap;
 }
 
 /* 选中态：如果你想选中后文字更亮一点 */
@@ -616,7 +859,7 @@ export default {
 .m-slot-name{
   font-family: font5;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 15px;
   opacity: .75;
   letter-spacing: .02em;
 }
@@ -624,8 +867,9 @@ export default {
 .m-slot-time{
   font-family: font5;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 15px;
   opacity: .75;
+  white-space: nowrap;
 }
 
 .m-slot-btn:active .m-slot-name,
