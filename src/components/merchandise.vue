@@ -134,89 +134,99 @@ export default {
       _onResize: null,
 
       items: [
-        { id: "p1", name: "piapro - Hatsune Miku Nika◯ Keychain", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Nika◯-keychain.png", link: "" },
-        { id: "p2", name: "piapro - Hatsune Miku DAY Keychain", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku DAY-keychain.png", link: "" },
-        { id: "p3", name: " piapro - Hatsune Miku Jagabata Keychain", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Jagabata-keychain.png", link: "" },
-        { id: "p4", name: "piapro - Hatsune Miku Usajimaru Keychain", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Usajimaru-keychain.png", link: "" },
-        { id: "p5", name: "piapro - Hatsune Miku Pentagon Keychain", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Pentagon-keychain.png", link: "" },
-        { id: "p6", name: "piapro - Hatsune Miku Nika◯ Acrylic Stand", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Nika◯-AcrylicStand.png", link: "" },
-        { id: "p7", name: "piapro - Hatsune Miku DAY Acrylic Stand", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku DAY-AcrylicStand.png", link: "" },
-        { id: "p8", name: "piapro - Hatsune Miku Jagabata Acrylic Stand", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Jagabata-AcrylicStand.png", link: "" },
-        { id: "p9", name: "piapro - Hatsune Miku Usajimaru Acrylic Stand", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Usajimaru-AcrylicStand.png", link: "" },
-        { id: "p10", name: "piapro - Hatsune Miku Pentagon Acrylic Stand", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Pentagon-AcrylicStand.png", link: "" },
+        { id: "p1", name: "piapro - Hatsune Miku Nika◯ Keychain", price: "Pre-Order", img: "/piapro - Hatsune Miku Nika◯-keychain.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-nika" },
+        { id: "p2", name: "piapro - Hatsune Miku DAY Keychain", price: "Pre-Order", img: "/piapro - Hatsune Miku DAY-keychain.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-day" },
+        { id: "p3", name: " piapro - Hatsune Miku Jagabata Keychain", price: "Pre-Order", img: "/piapro - Hatsune Miku Jagabata-keychain.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-jagabata" },
+        { id: "p4", name: "piapro - Hatsune Miku Usajimaru Keychain", price: "Pre-Order", img: "/piapro - Hatsune Miku Usajimaru-keychain.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-usajimaru" },
+        { id: "p5", name: "piapro - Hatsune Miku Pentagon Keychain", price: "Pre-Order", img: "/piapro - Hatsune Miku Pentagon-keychain.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-pentagon" },
+        { id: "p6", name: "piapro - Hatsune Miku Nika◯ Acrylic Stand", price: "Pre-Order", img: "/piapro - Hatsune Miku Nika◯-AcrylicStand.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-nika-1" },
+        { id: "p7", name: "piapro - Hatsune Miku DAY Acrylic Stand", price: "Pre-Order", img: "/piapro - Hatsune Miku DAY-AcrylicStand.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-day-1" },
+        { id: "p8", name: "piapro - Hatsune Miku Jagabata Acrylic Stand", price: "Pre-Order", img: "/piapro - Hatsune Miku Jagabata-AcrylicStand.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-jagabata-1" },
+        { id: "p9", name: "piapro - Hatsune Miku Usajimaru Acrylic Stand", price: "Pre-Order ", img: "/piapro - Hatsune Miku Usajimaru-AcrylicStand.png", link:"https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-usajimaru-1" },
+        { id: "p10", name: "piapro - Hatsune Miku Pentagon Acrylic Stand", price: "Pre-Order", img: "/piapro - Hatsune Miku Pentagon-AcrylicStand.png", link: "https://www.ny-miku-only.com/product-page/piapro-hatsune-miku-pentagon-1" },
         {
           id: "p11",
           name: "１Pac Nika◯ / DAY / Jagabata / Usajimaru / Pentagon",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/1Pac Can Badge.png",
           fit: "contain",
+          link: "",
         },
         {
           id: "p12",
           name: "5PCS Can Badge piapro - Hatsune Miku …",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/Can Badge 5PCS Set A.png",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/can-badge-5pcs-set-a",
         },
         {
           id: "p13",
           name: "5PCS Can Badge piapro - Hatsune Miku …",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/Can Badge 5PCS Set B.png",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/can-badge-5pcs-set-b",
         },
         {
           id: "p14",
           name: "5PCS Can Badge piapro - Hatsune Miku …",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/Can Badge 5PCS Set C.png",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/can-badge-5pcs-set-c",
         },
-        { id: "p15", name: "piapro - Hatsune Miku Nika◯ / M / L / XL / 2XL", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Nika◯-Tshirt.png", link: "" },
-        { id: "p18", name: " piapro - Hatsune Miku Usajimaru / M / L / XL / 2XL", price: "Pre-Order coming soon", img: "/piapro - Hatsune Miku Usajimaru-Tshirt.png", link: "" },
+        { id: "p15", name: "piapro - Hatsune Miku Nika◯ / M / L / XL / 2XL", price: "Pre-Order", img: "/piapro - Hatsune Miku Nika◯-Tshirt.png", link: "https://www.ny-miku-only.com/product-page/t-shirt-piapro-hatsune-miku-nika-m-l-xl-2xl" },
+        { id: "p18", name: " piapro - Hatsune Miku Usajimaru / M / L / XL / 2XL", price: "Pre-Order", img: "/piapro - Hatsune Miku Usajimaru-Tshirt.png", link: "https://www.ny-miku-only.com/product-page/t-shirt-piapro-hatsune-miku-usajimaru-m-l-xl-2xl" },
         {
           id: "p19",
           name: "piapro - Hatsune Miku Nika◯ Tote Bag",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/piapro - Hatsune Miku Nika◯-ToteBag.jpg",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/bag-piapro-hatsune-miku-nika",
         },
         {
           id: "p20",
           name: "piapro - Hatsune Miku DAY Tote Bag",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/piapro - Hatsune Miku DAY-ToteBag.jpg",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/bag-piapro-hatsune-miku-day",
         },
         {
           id: "p21",
           name: "piapro - Hatsune Miku Jagabata Tote Bag",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/piapro - Hatsune Miku Jagabata-ToteBag.jpg",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/bag-piapro-hatsune-miku-jagabata",
         },
         {
           id: "p22",
           name: "piapro - Hatsune Miku Usajimaru Tote Bag",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/piapro - Hatsune Miku Usajimaru-ToteBag.jpg",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/bag-piapro-hatsune-miku-usajimaru",
         },
         {
           id: "p23",
           name: "piapro - Hatsune Miku Pentagon Tote Bag",
-          price: "Pre-Order coming soon",
+          price: "Pre-Order",
           img: "/piapro - Hatsune Miku Pentagon-ToteBag.jpg",
           fit: "contain",
+          link: "https://www.ny-miku-only.com/product-page/bag-piapro-hatsune-miku-pentagon",
         },
       ],
 
-      // 桌面端拖拽滚动状态（保留你现有逻辑）
-      grabbing: false,
-      grabStartX: 0,
-      grabStartScrollLeft: 0,
-      didDrag: false,
-      _suppressClickUntil: 0,
+    grabbing: false,
+    pendingGrab: false,      // ✅ 新增：按下但还没确定是拖拽
+    grabPointerId: null,     // ✅ 新增
+    grabStartX: 0,
+    grabStartScrollLeft: 0,
+    didDrag: false,
+    _suppressClickUntil: 0,  // 你也可以留着先不动
     };
   },
 
@@ -266,30 +276,38 @@ export default {
     // ===== 桌面端：按住拖拽滚动（保留）=====
     startGrab(e) {
       if (this.isMobile) return;
-
-      // 仅左键（鼠标）
       if (e.pointerType === "mouse" && e.button !== 0) return;
 
       const rail = this.$refs.rail;
       if (!rail) return;
 
-      this.grabbing = true;
+      // ✅ 先进入“待定状态”，不要立刻 capture
+      this.pendingGrab = true;
+      this.grabPointerId = e.pointerId;
       this.didDrag = false;
       this.grabStartX = e.clientX;
       this.grabStartScrollLeft = rail.scrollLeft;
-
-      e.currentTarget.setPointerCapture?.(e.pointerId);
     },
 
     onGrabMove(e) {
       if (this.isMobile) return;
-      if (!this.grabbing) return;
+      if (!this.pendingGrab && !this.grabbing) return;
 
       const rail = this.$refs.rail;
       if (!rail) return;
 
       const dx = e.clientX - this.grabStartX;
-      if (Math.abs(dx) > 4) this.didDrag = true;
+
+      // ✅ 只有移动超过阈值，才开始真正拖拽
+      if (!this.grabbing) {
+        if (Math.abs(dx) < 10) return;   // 阈值：10px（你可以改 12/15）
+        this.grabbing = true;
+        this.pendingGrab = false;
+        this.didDrag = true;
+
+        // ✅ 现在才 capture（只在真正拖拽时）
+        e.currentTarget.setPointerCapture?.(e.pointerId);
+      }
 
       rail.scrollLeft = this.grabStartScrollLeft - dx;
       e.preventDefault();
@@ -297,15 +315,25 @@ export default {
 
     endGrab(e) {
       if (this.isMobile) return;
+
+      // 没发生拖拽：直接清理，让 click 正常发生在 button 上
+      if (this.pendingGrab) {
+        this.pendingGrab = false;
+        this.grabPointerId = null;
+        return;
+      }
+
       if (!this.grabbing) return;
 
       this.grabbing = false;
 
+      // 你原来 suppress click 的逻辑可以保留（可选）
       if (this.didDrag) {
-        this._suppressClickUntil = performance.now() + 250;
+        this._suppressClickUntil = performance.now() + 150; // 也可以 0/50/150
       }
 
       e.currentTarget.releasePointerCapture?.(e.pointerId);
+      this.grabPointerId = null;
     },
   },
 
@@ -703,5 +731,16 @@ export default {
   .merch-root {
     height: 100vh;
   }
+}
+
+.frontMask,
+.m-frontMask,
+.cardFrame,
+.m-cardFrame,
+.panelBase,
+.bg1,
+.bg2,
+.title {
+  pointer-events: none !important;
 }
 </style>

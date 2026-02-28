@@ -200,27 +200,27 @@ export default {
         },
         {
           id: "s3",
-          name: "Miraidol",
-          time: "12:30-12:45",
-          title: "Miraidol",
-          desc: "Song List: \n 1.Magnet \n 2.Patchwork Staccato \n 3.CandyCookieChocolate \n 4.Monitoring",
-          detailImg: "/miraidol_official.jpg",
-        },
-        {
-          id: "s4",
           name: "Game: Kahoot Challenge - Vocaloid",
-          time: "12:45-13:10",
+          time: "12:30-12:55",
           title: "Game: Kahoot Challenge - Vocaloid",
           desc: "Join us for an exciting Kahoot challenge featuring your favorite Vocaloid songs! Test your knowledge and compete with other fans for the top spot. Get ready for a fun and interactive experience!",
           detailImg: "/kahoot_vocaloid.jpg",
         },
         {
-          id: "s5",
+          id: "s4",
           name: "Third Prize Draw：Button Badge*9",
-          time: "13:10-13:20",
+          time: "12:55-13:10",
           title: "Third Prize Draw：Button Badge*9",
-          desc: "Congratulations to our third prize winners! Each winner will receive a set of 9 exclusive button badges featuring our beloved characters. Thank you to everyone who participated in the draw, and stay tuned for more exciting prizes in the future!",
+          desc: "Congratulations to our third prize winners! A total of nine prizes will be given out, and each winner will receive one random button badge selected from two available designs featuring our beloved characters. Thank you to everyone who participated in the draw, and stay tuned for more exciting prizes in the future!",
           detailImg: "/现场抽奖三等奖.JPG",
+        },
+        {
+          id: "s5",
+          name: "Miraidol",
+          time: "13:10-13:25",
+          title: "Miraidol",
+          desc: "Song List: \n 1.Magnet \n 2.Patchwork Staccato \n 3.CandyCookieChocolate \n 4.Monitoring",
+          detailImg: "/miraidol_official.jpg",
         },
         {
           id: "s6",
@@ -243,7 +243,7 @@ export default {
           name: "Yume Showtime☆! ",
           time: "13:55-14:15",
           title: "Yume Showtime☆! ",
-          desc: "...",
+          desc: "Song List:\n 1.Tell Your World\n 2.Deep Sea Girl\n 3.TONDEMO-WONDERZ\n 4.God-ish\n 5.Monitoring\n 6.Miku\n 7.Taiyoukei Disco",
           detailImg: "...",
         },
         {
@@ -369,7 +369,7 @@ export default {
         {
           id: "s24",
           name: "Drag Queen Hatsune Miku is Canon",
-          time: "16:45-16:50",
+          time: "16:45-16:51",
           title: "Drag Queen Hatsune Miku is Canon",
           desc: "Performing By Boxa Crayonz",
           detailImg: "...",
@@ -377,7 +377,7 @@ export default {
         {
           id: "s25",
           name: "Ifuudoudou by Vivid BAD SQUAD",
-          time: "16:50-16:54",
+          time: "16:51-16:55",
           title: "Ifuudoudou by Vivid BAD SQUAD",
           desc: "Performing By ANG3LZ",
           detailImg: "...",
@@ -385,7 +385,7 @@ export default {
         {
           id: "s26",
           name: "The Snow White Princess is... - MORE MORE JUMP!",
-          time: "16:54-16:58",
+          time: "16:55-16:59",
           title: "The Snow White Princess is... - MORE MORE JUMP!",
           desc: "Performing By CloverCure",
           detailImg: "...",
@@ -393,7 +393,7 @@ export default {
         {
           id: "s27",
           name: "Kira Kira ☆ Comet",
-          time: "16:58-17:02",
+          time: "16:59-17:03",
           title: "Kira Kira ☆ Comet",
           desc: "Performing By Kira Kira ☆ Comet",
           detailImg: "...",
@@ -859,7 +859,8 @@ export default {
 .m-slot-name{
   font-family: font5;
   font-weight: 900;
-  font-size: 15px;
+  font-size: 13px;
+  text-align: left;
   opacity: .75;
   letter-spacing: .02em;
 }
