@@ -236,7 +236,7 @@ export default {
           time: "13:40-13:55",
           title: "i:RεS",
           desc: "Song List:\n 1.Empurple\n 2.ロミオとシンデレラ\n 3.Secret Performance\n 4.気まぐれメルシィ",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s8",
@@ -244,7 +244,7 @@ export default {
           time: "13:55-14:15",
           title: "Yume Showtime☆! ",
           desc: "Song List:\n 1.Tell Your World\n 2.Deep Sea Girl\n 3.TONDEMO-WONDERZ\n 4.God-ish\n 5.Monitoring\n 6.Miku\n 7.Taiyoukei Disco",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s9",
@@ -252,7 +252,7 @@ export default {
           time: "14:15-15:00",
           title: "Human Wannabes",
           desc: "Song List:\n 1.Lost One no Goukoku\n 2.Kyoufuu All Back\n 3.Normal Discord\n 4.Unknown Mother Goose\n 5.アスノヨゾラ哨戒班\n 6.Blusher \n 7.Meltdown \n 8.Roki \n 9.Jigoku",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s10",
@@ -268,7 +268,7 @@ export default {
           time: "15:10-15:25",
           title: "Guess the Song Challenge",
           desc: "Test your knowledge of Vocaloid songs in our exciting Guess the Song Challenge! Compete with other fans and see who can identify the most songs correctly. Get ready for a fun and interactive experience!",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s12",
@@ -276,7 +276,7 @@ export default {
           time: "15:35-15:40",
           title: "Mesmerizing Triple Threat",
           desc: "Performing By Cosmic Tide",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s13",
@@ -284,7 +284,7 @@ export default {
           time: "15:40-15:45",
           title: "Telepop",
           desc: "Performing By Eby亦白",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s14",
@@ -292,7 +292,7 @@ export default {
           time: "15:45-15:50",
           title: "Ai Dee!",
           desc: "Performing By Sweet Eyes Cosplay",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s15",
@@ -300,7 +300,7 @@ export default {
           time: "15:50-15:55",
           title: "Gimme X Gimme",
           desc: "Performing By Ad Astra",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s16",
@@ -308,7 +308,7 @@ export default {
           time: "15:55-16:00",
           title: "Vampire - MORE MORE JUMP!",
           desc: "Performing By Parfait Soleil",
-          detailImg: "...",
+          detailImg: "ParfaitSoleil.png",
         },
         {
           id: "s17",
@@ -316,7 +316,7 @@ export default {
           time: "16:00-16:05",
           title: "Happy Synthesizer",
           desc: "Performing By C.ma.moves",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s18",
@@ -324,7 +324,7 @@ export default {
           time: "16:05-16:10",
           title: "Love Avoidance",
           desc: "Performing By Karen Chen",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s19",
@@ -332,7 +332,7 @@ export default {
           time: "16:10-16:15",
           title: "CUPID’s Loving Tragedy",
           desc: "Performing By CUPID",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s20",
@@ -340,7 +340,7 @@ export default {
           time: "16:20-16:25",
           title: "Unknown Mother Goose",
           desc: "Performing By Kikako",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s21",
@@ -348,7 +348,7 @@ export default {
           time: "16:25-16:30",
           title: "Mikustic!",
           desc: "Performing By MonochroMenace x Pomegranola",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s22",
@@ -356,7 +356,7 @@ export default {
           time: "16:35-16:40",
           title: "Fire*Flower Re:ReRec",
           desc: "Performing By Mi•Do•Ri",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s23",
@@ -364,7 +364,7 @@ export default {
           time: "16:40-16:45",
           title: "Romeo and Cinderlla",
           desc: "Performing By Tapikyoka",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s24",
@@ -372,7 +372,7 @@ export default {
           time: "16:45-16:51",
           title: "Drag Queen Hatsune Miku is Canon",
           desc: "Performing By Boxa Crayonz",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s25",
@@ -380,7 +380,7 @@ export default {
           time: "16:51-16:55",
           title: "Ifuudoudou by Vivid BAD SQUAD",
           desc: "Performing By ANG3LZ",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s26",
@@ -388,7 +388,7 @@ export default {
           time: "16:55-16:59",
           title: "The Snow White Princess is... - MORE MORE JUMP!",
           desc: "Performing By CloverCure",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s27",
@@ -396,7 +396,7 @@ export default {
           time: "16:59-17:03",
           title: "Kira Kira ☆ Comet",
           desc: "Performing By Kira Kira ☆ Comet",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s28",
@@ -412,7 +412,7 @@ export default {
           time: "17:15-17:20",
           title: "Photo Ops",
           desc: "Take memorable photos with your favorite characters and scenes from the event. Capture the moments and share your experience with friends!",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s30",
@@ -420,7 +420,7 @@ export default {
           time: "17:25-17:55",
           title: "Random Dance Chanllenge",
           desc: "Join the fun and show off your dance moves in our Random Dance Challenge! Compete with other participants and enjoy the lively atmosphere.",
-          detailImg: "...",
+          detailImg: "/赛车miku.jpg",
         },
         {
           id: "s31",
@@ -428,7 +428,7 @@ export default {
           time: "17:58-18:05",
           title: "Ending Ceremony",
           desc: "Join us for the grand finale as we wrap up the event with a memorable ending ceremony. Celebrate the highlights and enjoy the final moments with fellow attendees.",
-          detailImg: "...",
+          detailImg: "/mikuonly2026.png",
         },
         // ...你继续加
       ],
