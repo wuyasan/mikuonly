@@ -39,8 +39,8 @@
             <img :src="currentwindow === 'schedule' ? '/SCHEDULE_ON.png' : '/SCHEDULE_OFF.png'" alt="Schedule" />
           </button>
 
-          <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('merchandise')">
-            <img :src="currentwindow === 'merchandise' ? '/merchandise_ON.png' : '/merchandise_OFF.png'" alt="Merchandise" />
+          <button class="img-btn img-btn--wide" type="button" @click="openConductLinkMobile('merch')">
+            <img :src="'/merchandise_OFF.png'" alt="Merchandise" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindowMobile('conduct')">
@@ -83,8 +83,8 @@
             <img :src="currentwindow === 'schedule' ? '/SCHEDULE_ON.png' : '/SCHEDULE_OFF.png'" alt="Schedule" />
           </button>
 
-          <button class="img-btn img-btn--wide" type="button" @click="setWindow('merchandise')">
-            <img :src="currentwindow === 'merchandise' ? '/merchandise_ON.png' : '/merchandise_OFF.png'" alt="Merchandise" />
+          <button class="img-btn img-btn--wide" type="button" @click="openConductLink('merch')">
+            <img :src="'/merchandise_OFF.png'" alt="Merchandise" />
           </button>
 
           <button class="img-btn img-btn--wide" type="button" @click="setWindow('conduct')">
@@ -148,6 +148,7 @@ export default {
       let url = "";
       if (type === "general") url = "https://www.ny-miku-only.com/ticket-1";
       else if (type === "prop") url = "https://linktr.ee/mikuonly_nyc";
+      else if (type === "merch") url = "https://www.ny-miku-only.com//category/all-products";
       if (url) window.open(url, "_blank");
     },
     openConductLinkMobile(type) {

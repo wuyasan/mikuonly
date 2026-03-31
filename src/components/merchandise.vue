@@ -8,65 +8,12 @@
          Desktop / Tablet（完全保留你现有版本）
          ========================= -->
     <div v-if="!isMobile" class="stage" :style="stageStyle">
-      <!-- 标题（仍然独立在上方） -->
-      <img class="title" src="/Merchandise tittle.png" alt="Merchandise" />
-
-      <!-- ✅ merchBlock：白底商品 + 商品内容 = 一个整体 -->
-      <div class="merchBlock" aria-label="Merchandise block">
-        <!-- 白底_商品（背景） -->
-        <img class="panelBase" src="/白底_商品.png" alt="" aria-hidden="true" />
-
-        <!-- 商品内容区域（在白底内部定位） -->
-        <section class="shopArea" aria-label="Merchandise items">
-          <!-- ✅ 可视窗口：裁切商品，不超出白底 -->
-          <!-- ✅ pointer 拖拽滚动（曲面/超宽屏也能按住拖动） -->
-          <div
-            class="railViewport"
-            @wheel.passive="onWheel"
-            @pointerdown="startGrab"
-            @pointermove="onGrabMove"
-            @pointerup="endGrab"
-            @pointercancel="endGrab"
-            @pointerleave="endGrab"
-          >
-            <!-- ✅ 原生横向滚动条（网页 bar） -->
-            <div class="rail" ref="rail">
-              <div class="railInner">
-                <button
-                  v-for="item in items"
-                  :key="item.id"
-                  class="card"
-                  type="button"
-                  @click="open(item)"
-                >
-                  <!-- 底图：卡片框（图二） -->
-                  <img class="cardFrame" src="/商品卡片.png" alt="" aria-hidden="true" />
-
-                  <!-- 商品图：放进灰色窗口（图一） -->
-                  <!-- ✅ 新增：灰窗“遮挡层 + 裁切层” -->
-                  <div class="cardWindow" aria-hidden="true">
-                    <img
-                      class="cardArt"
-                      :class="item.fit === 'contain' ? 'fit-contain' : 'fit-cover'"
-                      :src="item.img"
-                      :alt="item.name"
-                    />
-                  </div>
-
-                  <!-- 文字（如果你想显示 ZHE SHI MING ZI） -->
-                  <div class="cardMeta">
-                    <div class="cardName">{{ item.name }}</div>
-                    <div class="cardPrice">{{ item.price }}</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            <!-- ✅ 最前边缘滤网遮罩：只覆盖卡片区域（不遮滚动条） -->
-            <img class="frontMask" src="/最前边缘滤网遮罩.png" alt="" aria-hidden="true" />
-          </div>
-        </section>
-      </div>
+      <main class="right-panel">
+        <iframe
+          src="https://www.ny-miku-only.com/category/all-products"
+          class="site-iframe"
+        ></iframe>
+      </main>
     </div>
 
     <!-- =========================
@@ -385,200 +332,22 @@ export default {
 /* =========================
    Desktop（你现有 CSS：原样保留）
    ========================= */
-.stage {
+/* 右边 iframe 区域 */
+.right-panel {
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 5%;
+  left:50%;
+  right: 0;
+  width: 83.3333%;
+  height: 83.3333%;
+  min-width: 0;
 }
 
-.title {
-  position: absolute;
-  left: 1000px;
-  top: 17%;
-  width: 640px;
-  height: auto;
-  z-index: 6;
-  pointer-events: none;
-  transform: scale(1.3);
-}
-
-.merchBlock {
-  position: absolute;
-  left: 27%;
-  top: 8%;
-  width: 1180px;
-  height: 760px;
-  z-index: 4;
-  transform: scale(1.2);
-  transform-origin: top left;
-}
-
-.panelBase {
-  position: absolute;
-  inset: 0;
+.site-iframe {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.shopArea {
-  position: absolute;
-  left: 120px;
-  right: 80px;
-  top: 150px;
-  bottom: 90px;
-  z-index: 2;
-}
-
-.railViewport {
-  position: relative;
-  width: 100%;
-  height: 450px;
-  overflow: hidden;
-  padding: 0 40px;
-  box-sizing: border-box;
-
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: pan-y;
-}
-.railViewport:active {
-  cursor: grabbing;
-}
-
-.rail {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-
-  scroll-padding-left: 40px;
-  scroll-padding-right: 40px;
-
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.65) rgba(255, 255, 255, 0.18);
-}
-
-.rail::-webkit-scrollbar {
-  height: 10px;
-}
-.rail::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-}
-.rail::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.65);
-  border-radius: 999px;
-}
-.rail::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.82);
-}
-
-.railInner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 34px;
-  padding: 0 40px;
-  width: max-content;
-}
-
-.card {
-  position: relative;
-  width: 250px;
-  height: 420px;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  flex: 0 0 auto;
-}
-
-.cardFrame{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit: contain;
-  pointer-events:none;
-  -webkit-user-drag:none;
-  user-drag:none;
-}
-
-/* ✅ 灰色窗口：负责“盖掉底图占位 + 裁切” */
-.cardWindow{
-  position: absolute;
-  left: 0%;
-  top: 2.7%;
-  width: 100%;
-  height: 84%;
-
-  background: #bfbfbf;
-  border-radius: 10px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-/* ✅ 商品图：铺满灰色框（cover），多余裁掉 */
-.cardArt{
-  position: absolute;
-  inset: 0;              /* ✅ 关键：占满窗口 */
-  width: 100%;
-  height: 100%;
-
-  object-position: center; /* ✅ 默认居中 */
-
-  /* 让边缘更干净（可选） */
-  transform: scale(1.02);
-}
-
-/* ✅ 文字层（如果卡片底图本身已经画了文字区，也可以用这种叠上去） */
-.cardMeta{
-  position:absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 7%;
-
-  display:flex;
-  flex-direction:column;
-  gap: 6px;
-
-  text-align:left;
-  pointer-events:none;
-}
-
-.cardName{
-  font-weight: 900;
-  font-size: 16px;
-  letter-spacing: .02em;
-  
-  background: rgba(255,255,255,0.9);
-  border-radius: 6px;
-}
-
-.cardPrice{
-  font-weight: 800;
-  font-size: 14px;
-  opacity: .8;
-}
-
-.frontMask {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: 3;
+  border: none;
+  display: block;
 }
 
 /* =========================
